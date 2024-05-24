@@ -9,7 +9,6 @@ dns:
   - "https://8.8.4.4/dns-query#🚀 节点选择"
   enable: true
   enhanced-mode: redir-host
-  listen: 0.0.0.0:7874
   default-nameserver:
   - 223.5.5.5
   - 119.29.29.29
