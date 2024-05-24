@@ -9,3 +9,4 @@ IP-CIDR,208.67.222.222/8,no-resolve
 DOMAIN,dns.cloudflare.com
 DOMAIN,dns.google
 DOMAIN,dns.adguard.com
+
