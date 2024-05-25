@@ -9,14 +9,14 @@
       { "tag": "dns_fakeip", "address": "fakeip" }
     ],
     "rules": [
-      { "outbound": "any", "server": [ "dns_alidns", "dns_dnspod" ] },
-      { "clash_mode": "Direct", "server": [ "dns_alidns", "dns_dnspod" ] },
-      { "clash_mode": "Global", "server": [ "dns_cloudflare", "dns_google" ] },
+      { "outbound": "any", "server":  "dns_alidns" },
+      { "clash_mode": "Direct", "server": "dns_alidns" },
+      { "clash_mode": "Global", "server": "dns_cloudflare" },
       { "geosite": [ "category-ads-all" ], "server": "dns_block" },
-      { "geosite": [ "microsoft@cn", "apple-cn", "google-cn", "category-games@cn", "cn", "private" ], "query_type": [ "A", "AAAA" ], "server": [ "dns_alidns", "dns_dnspod" ] },
-      { "geosite": [ "geolocation-!cn" ], "server":  [ "dns_cloudflare", "dns_google" ] }
+      { "geosite": [ "cn" ], "server":  "dns_alidns" },
+      { "geosite": [ "geolocation-!cn" ], "server": "dns_cloudflare" }
     ],
-    "final": [ "dns_cloudflare", "dns_google" ],
+    "final": "dns_cloudflare",
     "strategy": "prefer_ipv4",
     "independent_cache": true,
     "reverse_mapping": true,
