@@ -24,12 +24,6 @@
         ],
         "rules": [
             {
-                "outbound": [
-                    "any"
-                ],
-                "server": "dns_resolver"
-            },
-            {
                 "geosite": [
                     "category-ads-all"
                 ],
