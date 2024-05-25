@@ -1,24 +1,59 @@
 {
-  "dns": {
-    "servers": [
-      { "tag": "dns_block", "address": "rcode://refused" },
-      { "tag": "dns_alidns", "address": "h3://223.5.5.5/dns-query", "detour": "DIRECT" },
-      { "tag": "dns_dnspod", "address": "https://1.12.12.12/dns-query", "detour": "DIRECT" },
-      { "tag": "dns_cloudflare", "address": "h3://1.1.1.1/dns-query" },
-      { "tag": "dns_google", "address": "https://8.8.8.8/dns-query" }
-    ],
-    "rules": [
-      { "outbound": "any", "server":  "dns_alidns" },
-      { "clash_mode": "Direct", "server": "dns_alidns" },
-      { "clash_mode": "Global", "server": "dns_cloudflare" },
-      { "geosite": [ "category-ads-all" ], "server": "dns_block" },
-      { "geosite": [ "cn" ], "server":  "dns_alidns" },
-      { "geosite": [ "geolocation-!cn" ], "server": "dns_cloudflare" }
-    ],
-    "final": "dns_cloudflare",
-    "strategy": "prefer_ipv4",
-    "independent_cache": true,
-    "reverse_mapping": true,
-    "fakeip": { "enabled": false, "inet4_range": "198.18.0.0/15", "inet6_range": "fc00::/18" }
-  }
+    "dns": {
+        "servers": [
+            {
+                "tag": "dns_proxy",
+                "address": "tls://1.1.1.1",
+                "address_resolver": "dns_resolver"
+            },
+            {
+                "tag": "dns_direct",
+                "address": "h3://dns.alidns.com/dns-query",
+                "address_resolver": "dns_resolver",
+                "detour": "DIRECT"
+            },
+            {
+                "tag": "dns_resolver",
+                "address": "223.5.5.5",
+                "detour": "DIRECT"
+            },
+            {
+                "tag": "block",
+                "address": "rcode://success"
+            }
+        ],
+        "rules": [
+            {
+                "outbound": [
+                    "any"
+                ],
+                "server": "dns_resolver"
+            },
+            {
+                "geosite": [
+                    "category-ads-all"
+                ],
+                "server": "dns_block",
+                "disable_cache": true
+            },
+            {
+                "geosite": [
+                    "cn"
+                ],
+                "server": "dns_direct"
+            }
+            {
+                "geosite": [
+                    "geolocation-!cn"
+                ],
+                "server": "dns_proxy"
+            }
+        ],
+        "final": "dns_proxy",
+        "independent_cache": true,
+        "fakeip": {
+            "enabled": false,
+            "inet4_range": "198.18.0.0/15"
+        }
+    },
 }
