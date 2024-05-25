@@ -19,6 +19,10 @@
                 "detour": "DIRECT"
             },
             {
+                "tag": "dns_fakeip",
+                "address": "fakeip"
+            },
+            {
                 "tag": "dns_resolver",
                 "address": "223.5.5.5",
                 "detour": "DIRECT"
@@ -58,13 +62,23 @@
                 "geosite": [
                     "geolocation-!cn"
                 ],
+                "query_type": [
+                    "A",
+                    "AAAA"
+                ],
+                "server": "dns_fakeip"
+            },
+            {
+                "geosite": [
+                    "geolocation-!cn"
+                ],
                 "server": "dns_proxy"
             }
         ],
         "final": "dns_proxy",
         "independent_cache": true,
         "fakeip": {
-            "enabled": false,
+            "enabled": true,
             "inet4_range": "198.18.0.0/15"
         }
     },
@@ -95,7 +109,7 @@
     "experimental": {
         "cache_file": {
             "enabled": true,
-            "store_fakeip": false
+            "store_fakeip": true
         },
         "clash_api": {
             "external_controller": "127.0.0.1:9090",
