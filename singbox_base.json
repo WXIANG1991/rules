@@ -41,7 +41,7 @@
                     "cn"
                 ],
                 "server": "dns_direct"
-            }
+            },
             {
                 "geosite": [
                     "geolocation-!cn"
