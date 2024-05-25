@@ -43,9 +43,9 @@
             },
             {
                 "geosite": [
-                    "geolocation-!cn"
+                    "cn"
                 ],
-                "server": "dns_proxy"
+                "server": "dns_direct"
             }
         ],
         "final": "dns_proxy",
