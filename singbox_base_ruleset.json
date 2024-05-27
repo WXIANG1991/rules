@@ -140,6 +140,13 @@
                 "format": "binary",
                 "path": "./ruleset/cn-ip.srs",
                 "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geoip/cn.srs"
+              },
+              {
+                "tag": "private-ip",
+                "type": "remote",
+                "format": "binary",
+                "path": "./ruleset/private-ip.srs",
+                "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geoip/private.srs"
               }
         ]
     }
