@@ -1,0 +1,10 @@
+{
+  "rules": [
+    {
+      "domain_suffix": [
+        "fenbeitong.com"
+      ]
+    }
+  ],
+  "version": 1
+}
