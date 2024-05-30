@@ -37,7 +37,11 @@
             },
             {
                 "rule_set": [
-                    "cn"
+                    "cn",
+                    "direct-self",
+                    "microsoft-cn",
+                    "google-cn",
+                    "apple-cn"
                 ],
                 "server": "dns_direct"
             }
@@ -92,6 +96,13 @@
                 "format": "binary",
                 "download_detour": "🚀 节点选择",
                 "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/private.srs"
+            },
+            {
+                "tag": "direct-self",
+                "type": "remote",
+                "format": "source",
+                "download_detour": "🚀 节点选择",
+                "url": "https://raw.githubusercontent.com/KerryJi/rules/main/direct.list"
             },
             {
                 "tag": "ai",
