@@ -2,7 +2,8 @@
   "rules": [
     {
       "domain_suffix": [
-        "fenbeitong.com"
+        "fenbeitong.com",
+        "oray.com"
       ]
     }
   ],
