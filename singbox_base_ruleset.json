@@ -1,7 +1,7 @@
 {
-    "log": {
+ "log": {
         "disabled": false,
-        "level": "info",
+        "level": "warn",
         "timestamp": true
     },
     "dns": {
@@ -21,6 +21,7 @@
             {
                 "tag": "dns_resolver",
                 "address": "223.5.5.5",
+                "strategy": "ipv4_only",
                 "detour": "DIRECT"
             },
             {
@@ -43,10 +44,15 @@
                     "google-cn",
                     "apple-cn"
                 ],
+                "query_type": [
+                    "A",
+                    "AAAA"
+                ],
                 "server": "dns_direct"
             }
         ],
         "final": "dns_proxy",
+        "strategy": "prefer_ipv4",
         "independent_cache": true,
         "fakeip": {
             "enabled": false,
