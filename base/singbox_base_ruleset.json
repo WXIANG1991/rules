@@ -74,7 +74,7 @@
                 "type": "remote",
                 "format": "source",
                 "download_detour": "🚀 节点选择",
-                "url": "https://raw.githubusercontent.com/KerryJi/rules/main/direct-self.json"
+                "url": "https://raw.githubusercontent.com/KerryJi/rules/main/rule/direct-self.json"
             },
             {
                 "tag": "ai",

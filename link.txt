@@ -1,0 +1,1 @@
+https://raw.githubusercontent.com/KerryJi/rules/main/rule/direct-self.list
