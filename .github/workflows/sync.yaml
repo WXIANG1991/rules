@@ -53,8 +53,9 @@ jobs:
         fi
     - name: Get suburl txt
       uses: sergeysova/gist-read-action@v1
-      id: counter
+      id: read_suburl
       with:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         gist_id: ${{ secrets.GIST_ID }}
         file_name: suburl.txt
     - name: Run update_subscription script
