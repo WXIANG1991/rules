@@ -62,7 +62,6 @@ jobs:
         python3 update_subscription.py -s "${SUBSCRIPTION_URLS}" -c "${CONFIG2}" -e "${CHOOSE_END}" -t "clash" -o "clash2.yaml"
       # - python3 update_subscription_script.py -s "${SUBSCRIPTION_URLS}" -c "${CONFIG2}" -e "${CHOOSE_END}" -t "singbox" -o "singbox2.json"
         python3 update_subscription.py -s "${SUBSCRIPTION_URLS}" -c "${CONFIG3}" -e "${CHOOSE_END}" -t "singbox" -o "singbox_ruleset.json"
-    - uses: actions/checkout@v3
     - name: Deploy
       uses: exuanbo/actions-deploy-gist@v1
       with:
