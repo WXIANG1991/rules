@@ -62,6 +62,8 @@ jobs:
         file_name: "suburl.txt"
     - name: Run update_subscription script
       run: |
+        echo "suburl.txt content: ${{ steps.gist_content.outputs.content }}"
+        echo ${{ steps.gist_content.outputs.content }} > suburl.txt
         SUBSCRIPTION_URLS=$(paste -sd '|' suburl.txt)
         python3 update_subscription.py -s "${SUBSCRIPTION_URLS}" -c "${CONFIG}" -e "${CHOOSE_END}" -t "clash" -o "cla.yaml"
         # - python3 update_subscription_script.py -s "${SUBSCRIPTION_URLS}" -c "${CONFIG}" -e "${CHOOSE_END}" -t "singbox" -o "singbox.json"
