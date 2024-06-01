@@ -34,10 +34,10 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install pandas requests pyyaml
-    - name: Run script
+    - name: Run converter script
       run: python ../converter.py
       working-directory: ./rule/
-    - name: Commit and push config.json
+    - name: Commit and push config.json/srs
       run: |
         git config --global user.email "action@github.com"
         git config --global user.name "GitHub Action"
@@ -51,16 +51,21 @@ jobs:
           git commit -m "Update rules"
           git push
         fi
-    - name: Run update script
+    - name: Get suburl txt
+      uses: sergeysova/gist-read-action@v1
+      id: counter
+      with:
+        gist_id: ${{ secrets.GIST_ID }}
+        file_name: suburl.txt
+    - name: Run update_subscription script
       run: |
-        curl -O https://gist.githubusercontent.com/KerryJi/${{ secrets.GIST_ID }}/raw/4266d9bfc314b6a2c4cbfc0d6e26647b3801d7c8/suburl.txt
         SUBSCRIPTION_URLS=$(paste -sd '|' suburl.txt)
         python3 update_subscription.py -s "${SUBSCRIPTION_URLS}" -c "${CONFIG}" -e "${CHOOSE_END}" -t "clash" -o "cla.yaml"
         # - python3 update_subscription_script.py -s "${SUBSCRIPTION_URLS}" -c "${CONFIG}" -e "${CHOOSE_END}" -t "singbox" -o "singbox.json"
         python3 update_subscription.py -s "${SUBSCRIPTION_URLS}" -c "${CONFIG2}" -e "${CHOOSE_END}" -t "clash" -o "cla2.yaml"
         # - python3 update_subscription_script.py -s "${SUBSCRIPTION_URLS}" -c "${CONFIG2}" -e "${CHOOSE_END}" -t "singbox" -o "singbox2.json"
         python3 update_subscription.py -s "${SUBSCRIPTION_URLS}" -c "${CONFIG3}" -e "${CHOOSE_END}" -t "singbox" -o "sb_ruleset.json"
-    - name: Deploy
+    - name: Push to gist
       uses: exuanbo/actions-deploy-gist@v1
       with:
         token: ${{ secrets.GIST_TOKEN }}
