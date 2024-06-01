@@ -4,6 +4,7 @@ import argparse
 import os
 import requests
 import yaml
+import json
 
 def choose_backend(choose_end):
     global backend
@@ -306,9 +307,12 @@ if __name__ == "__main__":
         print(result)
     response = requests.get(result)
     response.raise_for_status()
+    text = response.text
+    if "json" in output:
+        text = json.dumps(json.loads(text), indent=2)
 
     with open(output, "w") as file:
-        file.write(response.text)
+        file.write(text)
 
     # return yaml.safe_load(response.text)
 
