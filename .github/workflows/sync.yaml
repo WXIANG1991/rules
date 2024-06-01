@@ -53,8 +53,6 @@ jobs:
         fi
     - name: Run update script
       run: |
-        apt-get update -qy
-        pip install requests PyYAML
         curl -O https://gist.githubusercontent.com/KerryJi/${{ secrets.GIST_ID }}/raw/4266d9bfc314b6a2c4cbfc0d6e26647b3801d7c8/suburl.txt
         SUBSCRIPTION_URLS=$(paste -sd '|' suburl.txt)
         python3 update_subscription.py -s "${SUBSCRIPTION_URLS}" -c "${CONFIG}" -e "${CHOOSE_END}" -t "clash" -o "clash.yaml"
