@@ -41,7 +41,6 @@ jobs:
       working-directory: ./rule/
     - name: cp sb_ruleset.ini sbp_ruleset.ini
       run: |
-        python ../converter.py
         jq -s '.[0] * .[1]' "base/sb_base_ruleset.json" "base/dns_p.json" > "base/sbp_base_ruleset.json"
         cp -f sb_ruleset.ini sbp_ruleset.ini
         sed -i 's/sb_base_ruleset/sbp_base_ruleset/g' sbp_ruleset.ini
