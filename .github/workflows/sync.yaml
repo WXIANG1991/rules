@@ -12,7 +12,7 @@ env:
   CONFIG: "https://raw.githubusercontent.com/KerryJi/rules/main/cla.ini"
   CONFIG2: "https://raw.githubusercontent.com/KerryJi/rules/main/nodnsleak.ini"
   CONFIG3: "https://raw.githubusercontent.com/KerryJi/rules/main/sb_ruleset.ini"
-  CONFIG3: "https://raw.githubusercontent.com/KerryJi/rules/main/sbp_ruleset.ini"
+  CONFIG4: "https://raw.githubusercontent.com/KerryJi/rules/main/sbp_ruleset.ini"
 
 jobs:
   build:
