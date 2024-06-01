@@ -39,8 +39,7 @@ jobs:
     - name: Run converter script
       run: |
         python ../converter.py
-        rm sbp_ruleset.ini
-        cp sb_ruleset.ini sbp_ruleset.ini
+        cp -f sb_ruleset.ini sbp_ruleset.ini
         sed -i 's/sb_base_ruleset/sbp_base_ruleset/g' sbp_ruleset.ini
       working-directory: ./rule/
     - name: cp sb_ruleset.ini sbp_ruleset.ini
