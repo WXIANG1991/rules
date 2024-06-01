@@ -11,14 +11,14 @@
       { "outbound": "any", "server": [ "dns_alidns", "dns_dnspod" ] },
       { "clash_mode": "Direct", "server": [ "dns_alidns", "dns_dnspod" ] },
       { "clash_mode": "Global", "server": [ "dns_proxy", "dns_proxy2" ] },
-      { "geosite": [ "category-ads-all" ], "server": "dns_block" },
-      { "geosite": [ "microsoft@cn", "apple-cn", "google-cn", "category-games@cn", "cn", "private" ], "query_type": [ "A", "AAAA" ], "server": [ "dns_alidns", "dns_dnspod" ] },
-      { "geosite": [ "geolocation-!cn" ], "query_type": [ "A", "AAAA" ], "server": [ "dns_proxy", "dns_proxy2" ] }
+      { "rule_set": [ "microsoft-cn", "apple-cn", "google-cn", "cn", "private","direct-self" ], "query_type": [ "A", "AAAA" ], "server": [ "dns_alidns", "dns_dnspod" ] }
     ],
     "final": [  "dns_proxy", "dns_proxy2" ],
     "strategy": "prefer_ipv4",
     "independent_cache": true,
     "reverse_mapping": true,
+    "disable_cache": false,
+    "disable_expire": false,
     "fakeip": { "enabled": false, "inet4_range": "198.18.0.0/15", "inet6_range": "fc00::/18" }
   }
 }
