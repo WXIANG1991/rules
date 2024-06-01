@@ -313,7 +313,6 @@ if __name__ == "__main__":
     retry_strategy = Retry(
         total=3,  # 重试次数
         status_forcelist=[429, 500, 502, 503, 504],  # 对哪些HTTP状态码重试
-        method_whitelist=["HEAD", "GET", "OPTIONS"],  # 对哪些请求方法重试
         backoff_factor=1  # 等待时间的增长因子
     )
 
