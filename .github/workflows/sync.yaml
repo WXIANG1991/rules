@@ -51,13 +51,15 @@ jobs:
           git commit -m "Update rules"
           git push
         fi
-    - name: Download Gist
-      uses: danielmcconville/gist-sync-file-action@v2.0.0
+    - name: Read gist
+      id: gist_content
+      uses: gorgbus/gist-actions@main
+      env:
+        GITHUB_TOKEN: ${{ secrets.GIST_TOKEN }}
       with:
-        gistPat: ${{ secrets.GIST_TOKEN }}
-        gistId: ${{ secrets.GIST_ID }}
-        action: download
-        filename: suburl.txt
+        action: "get"
+        gist_id: ${{ secrets.GIST_ID }}
+        file_name: "suburl.txt"
     - name: Run update_subscription script
       run: |
         SUBSCRIPTION_URLS=$(paste -sd '|' suburl.txt)
