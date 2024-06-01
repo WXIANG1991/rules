@@ -6,6 +6,9 @@ import requests
 import yaml
 import json
 
+from requests.adapters import HTTPAdapter
+from requests.packages.urllib3.util.retry import Retry
+
 def choose_backend(choose_end):
     global backend
     if choose_end == "":
@@ -305,7 +308,21 @@ if __name__ == "__main__":
 
         print("\n\n====================================================\n已生成转换链接，复制至客户端下载配置即可使用:\n")
         print(result)
-    response = requests.get(result)
+
+    # 定义重试策略
+    retry_strategy = Retry(
+        total=3,  # 重试次数
+        status_forcelist=[429, 500, 502, 503, 504],  # 对哪些HTTP状态码重试
+        method_whitelist=["HEAD", "GET", "OPTIONS"],  # 对哪些请求方法重试
+        backoff_factor=1  # 等待时间的增长因子
+    )
+
+    session = requests.Session()
+    adapter = HTTPAdapter(max_retries=retry_strategy)
+    session.mount("http://", adapter)
+    session.mount("https://", adapter)
+
+    response = session.get(result)
     response.raise_for_status()
     text = response.text
     if "json" in output:
