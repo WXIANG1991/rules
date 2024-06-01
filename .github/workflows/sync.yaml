@@ -55,15 +55,29 @@ jobs:
       run: |
         curl -O https://gist.githubusercontent.com/KerryJi/${{ secrets.GIST_ID }}/raw/4266d9bfc314b6a2c4cbfc0d6e26647b3801d7c8/suburl.txt
         SUBSCRIPTION_URLS=$(paste -sd '|' suburl.txt)
-        python3 update_subscription.py -s "${SUBSCRIPTION_URLS}" -c "${CONFIG}" -e "${CHOOSE_END}" -t "clash" -o "clash.yaml"
+        python3 update_subscription.py -s "${SUBSCRIPTION_URLS}" -c "${CONFIG}" -e "${CHOOSE_END}" -t "clash" -o "cla.yaml"
         # - python3 update_subscription_script.py -s "${SUBSCRIPTION_URLS}" -c "${CONFIG}" -e "${CHOOSE_END}" -t "singbox" -o "singbox.json"
-        python3 update_subscription.py -s "${SUBSCRIPTION_URLS}" -c "${CONFIG2}" -e "${CHOOSE_END}" -t "clash" -o "clash2.yaml"
+        python3 update_subscription.py -s "${SUBSCRIPTION_URLS}" -c "${CONFIG2}" -e "${CHOOSE_END}" -t "clash" -o "cla2.yaml"
         # - python3 update_subscription_script.py -s "${SUBSCRIPTION_URLS}" -c "${CONFIG2}" -e "${CHOOSE_END}" -t "singbox" -o "singbox2.json"
-        python3 update_subscription.py -s "${SUBSCRIPTION_URLS}" -c "${CONFIG3}" -e "${CHOOSE_END}" -t "singbox" -o "singbox_ruleset.json"
+        python3 update_subscription.py -s "${SUBSCRIPTION_URLS}" -c "${CONFIG3}" -e "${CHOOSE_END}" -t "singbox" -o "sb_ruleset.json"
     - name: Deploy
       uses: exuanbo/actions-deploy-gist@v1
       with:
         token: ${{ secrets.GIST_TOKEN }}
         gist_id:  ${{ secrets.GIST_ID }}
-        file_path: singbox_ruleset.json
+        file_path: cla.yaml
+        file_type: text
+    - name: Deploy
+      uses: exuanbo/actions-deploy-gist@v1
+      with:
+        token: ${{ secrets.GIST_TOKEN }}
+        gist_id:  ${{ secrets.GIST_ID }}
+        file_path: cla2.yaml
+        file_type: text
+    - name: Deploy
+      uses: exuanbo/actions-deploy-gist@v1
+      with:
+        token: ${{ secrets.GIST_TOKEN }}
+        gist_id:  ${{ secrets.GIST_ID }}
+        file_path: sb_ruleset.json
         file_type: text
