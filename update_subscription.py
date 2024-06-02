@@ -217,7 +217,7 @@ if __name__ == "__main__":
 
     # url = input("\n请输入你要转换的链接地址如果有多条链接，请用 | 分隔：")
     url = args.sub_urls.replace("\\", "")
-    print("\n本次转换的链接为：" + url)
+    # print("\n本次转换的链接为：" + url)
     url = urllib.parse.quote(url)
 
     print(
@@ -308,7 +308,7 @@ if __name__ == "__main__":
             print("不启用网易云")
 
         print("\n\n====================================================\n已生成转换链接，复制至客户端下载配置即可使用:\n")
-        print(result)
+        # print(result)
     if args.link_only:
         print("save link only")
         with open(output, "w") as file:
