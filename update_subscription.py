@@ -310,6 +310,7 @@ if __name__ == "__main__":
         print("\n\n====================================================\n已生成转换链接，复制至客户端下载配置即可使用:\n")
         print(result)
     if args.link_only:
+        print("save link only")
         with open(output, "w") as file:
             file.write(result)
     else:
@@ -333,7 +334,3 @@ if __name__ == "__main__":
 
         with open(output, "w") as file:
             file.write(text)
-
-    # return yaml.safe_load(response.text)
-
-    # input("\n\n复制完链接后，请按任意键退出：")
