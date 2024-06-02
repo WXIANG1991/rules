@@ -66,11 +66,11 @@ jobs:
           for file; do
             if [ -f "$file" ]; then
               filename=$(basename "$file")
-              tar -czf "./$filename.tar.gz" "$file"
-              echo "Compressed $file to $filename.tar.gz"
+              tar -czf "./$filename.tar.gz" --transform "s|^.*/||" -C "$(dirname "$file")" "$filename"
+              echo "Compressed $file to ./$filename.tar.gz"
             fi
           done' _ {} +
-        ls ./downloaded_artifact/ -al
+        ls ./ -al
 
     - name: Upload artifact to this repository
       uses: actions/upload-artifact@v4
