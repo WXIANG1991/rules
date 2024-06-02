@@ -42,6 +42,13 @@
       },
       {
         "rule_set": [
+          "win-spy"
+        ],
+        "server": "dns_block"
+      },
+      {
+        "rule_set": [
+          "win-update",
           "microsoft-cn",
           "apple-cn",
           "google-cn",
