@@ -170,6 +170,7 @@ if __name__ == "__main__":
     parser.add_argument('--choose_end', "-e", type=str, default = None)
     parser.add_argument('--target', "-t", type=str, default = None)
     parser.add_argument('--output', "-o", type=str, default = None)
+    parser.add_argument('--link_only', "-l", type=bool, default = False)
     args = parser.parse_args()
     config = args.config
     choose_end = args.choose_end
@@ -308,27 +309,30 @@ if __name__ == "__main__":
 
         print("\n\n====================================================\n已生成转换链接，复制至客户端下载配置即可使用:\n")
         print(result)
+    if args.link_only:
+        with open(output, "w") as file:
+            file.write(result)
+    else:
+        # 定义重试策略
+        retry_strategy = Retry(
+            total=3,  # 重试次数
+            status_forcelist=[429, 500, 502, 503, 504],  # 对哪些HTTP状态码重试
+            backoff_factor=1  # 等待时间的增长因子
+        )
 
-    # 定义重试策略
-    retry_strategy = Retry(
-        total=3,  # 重试次数
-        status_forcelist=[429, 500, 502, 503, 504],  # 对哪些HTTP状态码重试
-        backoff_factor=1  # 等待时间的增长因子
-    )
+        session = requests.Session()
+        adapter = HTTPAdapter(max_retries=retry_strategy)
+        session.mount("http://", adapter)
+        session.mount("https://", adapter)
 
-    session = requests.Session()
-    adapter = HTTPAdapter(max_retries=retry_strategy)
-    session.mount("http://", adapter)
-    session.mount("https://", adapter)
+        response = session.get(result)
+        response.raise_for_status()
+        text = response.text
+        if "json" in output:
+            text = json.dumps(json.loads(text), indent=2, ensure_ascii=False)
 
-    response = session.get(result)
-    response.raise_for_status()
-    text = response.text
-    if "json" in output:
-        text = json.dumps(json.loads(text), indent=2, ensure_ascii=False)
-
-    with open(output, "w") as file:
-        file.write(text)
+        with open(output, "w") as file:
+            file.write(text)
 
     # return yaml.safe_load(response.text)
 

@@ -15,7 +15,8 @@
             },
             {
                 "rule_set": "private-ip",
-                "outbound": "🎯 全球直连"
+                "outbound": "🎯 全球直连",
+                "skip_resolve": true
             },            
             {
                 "rule_set": "direct-self",
@@ -51,7 +52,8 @@
             },
             {
                 "rule_set": "cn-ip",
-                "outbound": "🎯 全球直连"
+                "outbound": "🎯 全球直连",
+                "skip_resolve": true
             }
         ],
         "final": "🐟 漏网之鱼"
@@ -104,17 +106,17 @@
         },
         {
             "type": "selector",
-            "tag": "🎯 全球直连",
+            "tag": "GLOBAL",
             "outbounds": [
+                "🚀 节点选择",
                 "DIRECT"
             ]
         },
         {
             "type": "selector",
-            "tag": "GLOBAL",
+            "tag": "🎯 全球直连",
             "outbounds": [
-                "DIRECT",
-                "🚀 节点选择"
+                "DIRECT"
             ]
         }
     ]

@@ -41,7 +41,11 @@ jobs:
     - name: create spb_ruleset2.json
       run: |
         curl -O https://gist.githubusercontent.com/KerryJi/${{ secrets.GIST_ID }}/raw/outbound_providers.json
-        jq -s '.[0] * .[1] * .[2] * .[3]' "base/sbp_base_ruleset.json" "base/dns_p.json" "base/outbounds_use_provider.json" "outbound_providers.json" > "sbp_ruleset2.json"
+        python3 update_subscription.py -s "${SUBSCRIPTION_URLS}" -c "${CONFIG2}" -e "${CHOOSE_END}" -t "clash" -o "cla_link.txt" -l True
+        # 读取 name.txt 内容并存储在一个变量中
+        echo "{\"outbound_providers: {\"download_url: \"$(<cla_link.txt)\"} }" > temp_link.json
+
+        jq -s '.[0] * .[1] * .[2] * .[3] * .[4]' "base/sbp_base_ruleset.json" "base/dns_p.json" "base/outbounds_use_provider.json" "outbound_providers.json" "temp_link.json" > "sbp_ruleset2.json"
     - name: Push to gist
       uses: exuanbo/actions-deploy-gist@v1
       with:
