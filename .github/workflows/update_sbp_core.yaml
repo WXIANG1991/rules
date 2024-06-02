@@ -7,9 +7,6 @@ on:
         description: 'Workflow file name or ID'
         required: true
         default: 'core.yml'
-      artifact_name:
-        description: 'Name of the artifact to download'
-        required: true
       workflow_branch:
         description: 'workflow_branch'
         required: true
@@ -65,15 +62,18 @@ jobs:
         sudo apt-get install unzip -y
         pwd
         chmod 775 ./downloaded_artifact/*
-        find ./downloaded_artifact/ -type f -name "*" -exec sh -c 'tar -czf "${1}.tar.gz" -C ./downloaded_artifact/ -T -' _ {} \;
+        find downloaded_artifact/ -type f -exec sh -c '
+          for file; do
+            if [ -f "$file" ]; then
+              filename=$(basename "$file")
+              tar -czf "$filename.tar.gz" "$file"
+              echo "Compressed $file to $filename.tar.gz"
+            fi
+          done' _ {} +
         ls ./downloaded_artifact/ -al
-
-    # - name: Re-compress to tar.gz
-    #   run: |
-    #     tar -czvf ${{ github.event.inputs.artifact_name }}.tar.gz -C ./extracted_artifact .
 
     - name: Upload artifact to this repository
       uses: actions/upload-artifact@v4
       with:
-        name: artifact.tar.gz
-        path: ./downloaded_artifact/*.tar.gz
+        name: sing-box-linux-arm64.tar.gz
+        path: ./*.tar.gz
