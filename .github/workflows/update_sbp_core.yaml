@@ -61,7 +61,7 @@ jobs:
       run: |
         sudo apt-get install unzip -y
         pwd
-        chmod 775 ./downloaded_artifact/*
+        chmod -R 775 ./downloaded_artifact/*
         find downloaded_artifact/ -type f -exec sh -c '
           for file; do
             if [ -f "$file" ]; then
