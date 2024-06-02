@@ -100,8 +100,6 @@
             "type": "urltest",
             "tag": "♻️ 自动选择",
             "providers": [ "sub_provider_1" ],
-            "url": "http://www.gstatic.com/generate_204",
-            "interval": "5m",
             "tolerance": 50
         },
         {
