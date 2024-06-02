@@ -148,6 +148,20 @@
         "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/onedrive.srs"
       },
       {
+        "tag": "win-spy",
+        "type": "remote",
+        "format": "binary",
+        "download_detour": "🚀 节点选择",
+        "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/win-spy.srs"
+      },
+      {
+        "tag": "win-update",
+        "type": "remote",
+        "format": "binary",
+        "download_detour": "🚀 节点选择",
+        "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/win-update.srs"
+      },
+      {
         "tag": "microsoft-cn",
         "type": "remote",
         "format": "binary",
