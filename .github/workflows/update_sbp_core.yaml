@@ -56,20 +56,23 @@ jobs:
         repository: ${{ env.owner }}/${{ env.repo }}
         run-id: ${{ env.latest_run_id }}
         github-token: ${{ secrets.GITHUB_TOKEN }}
+        pattern: sing-box-*-linux-arm64
         # name: ${{ github.event.inputs.artifact_name }}
         path: ./downloaded_artifact
 
     - name: Unzip artifact
       run: |
         sudo apt-get install unzip -y
-        unzip ./downloaded_artifact/${{ github.event.inputs.artifact_name }} -d ./extracted_artifact
+        pwd
+        find ./downloaded_artifact/ -type f -name "*.zip" -exec sh -c 'unzip -p "$1"| chmod 775 ./downloaded_artifact/* | tar -czf "${1%.zip}.tar.gz" -C ./downloaded_artifact/ -T -' _ {} \;
+
 
     - name: Re-compress to tar.gz
       run: |
         tar -czvf ${{ github.event.inputs.artifact_name }}.tar.gz -C ./extracted_artifact .
 
     - name: Upload artifact to this repository
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v4
       with:
-        name: ${{ github.event.inputs.artifact_name }}.tar.gz
-        path: ${{ github.event.inputs.artifact_name }}.tar.gz
+        name: artifact.tar.gz
+        path: ./downloaded_artifact/*.tar.gz
