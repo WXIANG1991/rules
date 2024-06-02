@@ -28,13 +28,26 @@ jobs:
     - name: Get latest workflow run ID
       id: get_workflow_run_id
       run: |
+        owner="${{ env.owner }}"
+        repo="${{ env..repo }}"
         workflow_id="${{ github.event.inputs.workflow_id }}"
         workflow_branch="${{ github.event.inputs.workflow_branch }}"
         
-        latest_run_id=$(curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
-          "https://api.github.com/repos/${{ env.owner }}/${{ env.repo }}/actions/workflows/$workflow_id/runs?branch=${workflow_branch}&status=completed&per_page=1" \
-          | jq -r '.workflow_runs[0].id')
-        
+        echo "Fetching latest workflow run ID for $owner/$repo/workflows/$workflow_id"
+
+        response=$(curl -s -H "Authorization: token $GITHUB_TOKEN" \
+          "https://api.github.com/repos/$owner/$repo/actions/workflows/$workflow_id/runs?branch=${workflow_branch}&status=completed&per_page=1")
+
+        echo "Response: $response"
+
+        latest_run_id=$(echo "$response" | jq -r '.workflow_runs[0].id')
+
+        if [ "$latest_run_id" == "null" ]; then
+          echo "No workflow run ID found."
+          exit 1
+        fi
+
+        echo "Latest workflow run ID: $latest_run_id"
         echo "latest_run_id=$latest_run_id" >> $GITHUB_ENV
 
     - name: Download artifact from another repository
