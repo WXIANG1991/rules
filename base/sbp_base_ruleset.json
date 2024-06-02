@@ -22,7 +22,7 @@
         "tag": "dns_proxy",
         "address": [
           "h3://1.0.0.1/dns-query",
-          "h3://9.9.9.9/dns-query"
+          "https://9.9.9.9/dns-query"
         ],
         "detour": "🚀 节点选择"
       }
@@ -54,6 +54,18 @@
           "AAAA"
         ],
         "server": "dns_direct"
+      },
+      {
+        "fallback_rules": [
+          {
+            "rule_set": [
+              "cn-ip"
+            ],
+            "invert": true
+          }
+        ],
+        "server": "dns_proxy",
+        "rewrite_ttl": 1
       }
     ],
     "final": "dns_proxy",
@@ -66,7 +78,8 @@
       "enabled": false,
       "inet4_range": "198.18.0.0/15",
       "inet6_range": "fc00::/18"
-    }
+    },
+    "mapping_override": true
   },
   "ntp": {
     "enabled": true,
