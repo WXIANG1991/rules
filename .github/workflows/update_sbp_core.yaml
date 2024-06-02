@@ -54,7 +54,7 @@ jobs:
       uses: actions/download-artifact@v4
       with:
         repository: ${{ env.owner }}/${{ env.repo }}
-        run_id: ${{ env.latest_run_id }}
+        run-id: ${{ env.latest_run_id }}
         # name: ${{ github.event.inputs.artifact_name }}
         path: ./downloaded_artifact
 
