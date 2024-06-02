@@ -1,4 +1,61 @@
 {
+    "route": {
+        "rules": [
+            {
+                "clash_mode": "Global",
+                "outbound": "GLOBAL"
+            },
+            {
+                "clash_mode": "Direct",
+                "outbound": "DIRECT"
+            },
+            {
+                "protocol": "dns",
+                "outbound": "dns-out"
+            },
+            {
+                "rule_set": "private-ip",
+                "outbound": "🎯 全球直连"
+            },            
+            {
+                "rule_set": "direct-self",
+                "outbound": "🎯 全球直连"
+            },
+            {
+                "rule_set": "private",
+                "outbound": "🎯 全球直连"
+            },
+            {
+                "rule_set": "ai",
+                "outbound": "🚀 节点选择"
+            },
+            {
+                "rule_set": "onedrive",
+                "outbound": "Ⓜ️ OneDrive"
+            },
+            {
+                "rule_set": "microsoft-cn",
+                "outbound": "🎯 全球直连"
+            },
+            {
+                "rule_set": "google-cn",
+                "outbound": "🎯 全球直连"
+            },
+            {
+                "rule_set": "apple-cn",
+                "outbound": "🎯 全球直连"
+            },
+            {
+                "rule_set": "cn",
+                "outbound": "🎯 全球直连"
+            },
+            {
+                "rule_set": "cn-ip",
+                "outbound": "🎯 全球直连"
+            }
+        ],
+        "final": "🐟 漏网之鱼"
+    },
     "outbounds": [
         {
             "type": "direct",

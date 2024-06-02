@@ -41,7 +41,7 @@ jobs:
     - name: create spb_ruleset2.json
       run: |
         curl -O https://gist.githubusercontent.com/KerryJi/${{ secrets.GIST_ID }}/raw/outbound_providers.json
-        jq -s '.[0] * .[1] * .[2] * .[3]' "base/sb_base_ruleset.json" "base/dns_p.json" "base/outbounds_use_provider.json" "outbound_providers.json" > "sbp_ruleset2.json"
+        jq -s '.[0] * .[1] * .[2] * .[3]' "base/sbp_base_ruleset.json" "base/dns_p.json" "base/outbounds_use_provider.json" "outbound_providers.json" > "sbp_ruleset2.json"
     - name: Push to gist
       uses: exuanbo/actions-deploy-gist@v1
       with:
