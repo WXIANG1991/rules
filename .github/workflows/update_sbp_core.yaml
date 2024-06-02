@@ -64,7 +64,7 @@ jobs:
       run: |
         sudo apt-get install unzip -y
         pwd
-        find ./downloaded_artifact/ -type f -name "*.zip" -exec sh -c 'unzip -p "$1"| chmod 775 ./downloaded_artifact/* | tar -czf "${1%.zip}.tar.gz" -C ./downloaded_artifact/ -T -' _ {} \;
+        find ./downloaded_artifact/ -type f -name "*" -exec sh -c 'unzip -p "$1"| chmod 775 ./downloaded_artifact/* | tar -czf "${1%}.tar.gz" -C ./downloaded_artifact/ -T -' _ {} \;
         ls ./downloaded_artifact/ -al
 
     # - name: Re-compress to tar.gz
