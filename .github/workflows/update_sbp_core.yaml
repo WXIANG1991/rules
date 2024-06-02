@@ -65,11 +65,11 @@ jobs:
         sudo apt-get install unzip -y
         pwd
         find ./downloaded_artifact/ -type f -name "*.zip" -exec sh -c 'unzip -p "$1"| chmod 775 ./downloaded_artifact/* | tar -czf "${1%.zip}.tar.gz" -C ./downloaded_artifact/ -T -' _ {} \;
+        ls ./downloaded_artifact/ -al
 
-
-    - name: Re-compress to tar.gz
-      run: |
-        tar -czvf ${{ github.event.inputs.artifact_name }}.tar.gz -C ./extracted_artifact .
+    # - name: Re-compress to tar.gz
+    #   run: |
+    #     tar -czvf ${{ github.event.inputs.artifact_name }}.tar.gz -C ./extracted_artifact .
 
     - name: Upload artifact to this repository
       uses: actions/upload-artifact@v4
