@@ -3,13 +3,17 @@ name: Download, Process, and Upload Artifact
 on:
   workflow_dispatch:
     inputs:
-      workflow_run_id:
+      workflow_id:
         description: 'Workflow file name or ID'
         required: true
-        default: '9331184609'
+        default: 'core.yaml'
       artifact_name:
         description: 'Name of the artifact to download'
         required: true
+      workflow_branch:
+        description: 'workflow_branch'
+        required: true
+        default: 'building'
 env:
   owner: "PuerNya"
   repo: "sing-box"
@@ -20,6 +24,18 @@ jobs:
     steps:
     - name: Checkout this repository
       uses: actions/checkout@v2
+
+    - name: Get latest workflow run ID
+      id: get_workflow_run_id
+      run: |
+        workflow_id="${{ github.event.inputs.workflow_id }}"
+        workflow_branch="${{ github.event.inputs.workflow_branch }}"
+        
+        latest_run_id=$(curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+          "https://api.github.com/repos/$owner/$repo/actions/workflows/$workflow_id/runs?branch=${workflow_branch}&status=completed&per_page=1" \
+          | jq -r '.workflow_runs[0].id')
+        
+        echo "latest_run_id=$latest_run_id" >> $GITHUB_ENV
 
     - name: Download artifact from another repository
       uses: actions/download-artifact@v2
