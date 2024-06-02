@@ -51,10 +51,11 @@ jobs:
         echo "latest_run_id=$latest_run_id" >> $GITHUB_ENV
 
     - name: Download artifact from another repository
-      uses: actions/download-artifact@v3
+      uses: actions/download-artifact@v4
       with:
         repository: ${{ env.owner }}/${{ env.repo }}
         run-id: ${{ env.latest_run_id }}
+        github-token: ${{ secrets.GITHUB_TOKEN }}
         # name: ${{ github.event.inputs.artifact_name }}
         path: ./downloaded_artifact
 
