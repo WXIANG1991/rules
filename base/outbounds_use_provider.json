@@ -35,6 +35,14 @@
                 "outbound": "Ⓜ️ OneDrive"
             },
             {
+                "rule_set": "win-spy",
+                "outbound": "REJECT"
+            },
+            {
+                "rule_set": "win-update",
+                "outbound": "🎯 全球直连"
+            },
+            {
                 "rule_set": "microsoft-cn",
                 "outbound": "🎯 全球直连"
             },

@@ -38,6 +38,11 @@ jobs:
     - name: Run converter script
       run: python ../converter.py
       working-directory: ./rule/
+    - name: cp sb_ruleset.ini sbp_ruleset.ini
+      run: |
+        jq -s '.[0] * .[1]' "base/sb_base_ruleset.json" "base/dns_p.json" > "base/sbp_base_ruleset.json"
+        cp -f sb_ruleset.ini sbp_ruleset.ini
+        sed -i 's/sb_base_ruleset/sbp_base_ruleset/g' sbp_ruleset.ini
     - name: create spb_ruleset2.json
       run: |
         curl -O https://gist.githubusercontent.com/KerryJi/${{ secrets.GIST_ID }}/raw/outbound_providers.json
@@ -53,11 +58,6 @@ jobs:
         gist_id:  ${{ secrets.GIST_ID }}
         file_path: sbp_ruleset2.json
         file_type: text
-    - name: cp sb_ruleset.ini sbp_ruleset.ini
-      run: |
-        jq -s '.[0] * .[1]' "base/sb_base_ruleset.json" "base/dns_p.json" > "base/sbp_base_ruleset.json"
-        cp -f sb_ruleset.ini sbp_ruleset.ini
-        sed -i 's/sb_base_ruleset/sbp_base_ruleset/g' sbp_ruleset.ini
     - name: Commit and push config.json/srs
       run: |
         git config --global user.email "action@github.com"
