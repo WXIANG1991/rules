@@ -1,0 +1,58 @@
+name: Download, Process, and Upload Artifact
+
+on:
+  workflow_dispatch:
+    inputs:
+      workflow_id:
+        description: 'Workflow file name or ID'
+        required: true
+        default: 'core.yml'
+      artifact_name:
+        description: 'Name of the artifact to download'
+        required: true
+env：
+  owner: "PuerNya"
+  repo: "sing-box"
+
+
+
+jobs:
+  process-artifact:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout this repository
+      uses: actions/checkout@v2
+    - name: Get latest workflow run ID
+      id: get_workflow_run_id
+      run: |
+        workflow_id="${{ github.event.inputs.workflow_id }}"
+        
+        latest_run_id=$(curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+          "https://api.github.com/repos/$owner/$repo/actions/workflows/$workflow_id/runs?branch=main&status=completed&per_page=1" \
+          | jq -r '.workflow_runs[0].id')
+        
+        echo "latest_run_id=$latest_run_id" >> $GITHUB_ENV
+
+    - name: Download artifact from another repository
+      uses: actions/download-artifact@v2
+      with:
+        repository: ${{ github.event.inputs.owner }}/{{ github.event.inputs.repo }}
+        workflow_run_id: ${{ env.latest_run_id }}
+        name: ${{ github.event.inputs.artifact_name }}
+        path: ./downloaded_artifact
+
+    - name: Unzip artifact
+      run: |
+        sudo apt-get install unzip -y
+        unzip ./downloaded_artifact/${{ github.event.inputs.artifact_name }}.zip -d ./extracted_artifact
+
+    - name: Re-compress to tar.gz
+      run: |
+        tar -czvf ${{ github.event.inputs.artifact_name }}.tar.gz -C ./extracted_artifact .
+
+    - name: Upload artifact to this repository
+      uses: actions/upload-artifact@v2
+      with:
+        name: processed_artifact
+        path: processed_artifact.tar.gz
