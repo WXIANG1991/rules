@@ -10,7 +10,7 @@ on:
       artifact_name:
         description: 'Name of the artifact to download'
         required: true
-env：
+env:
   owner: "PuerNya"
   repo: "sing-box"
 
