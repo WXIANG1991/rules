@@ -83,7 +83,7 @@ jobs:
         if git diff --staged --quiet; then
           echo "No changes to commit"
         else
-          git commit -m "Update rules"
+          git commit -m "Update bin"
           git push
         fi
 
