@@ -83,10 +83,9 @@
             "type": "selector",
             "tag": "🚀 节点选择",
             "outbounds": [
-                "♻️ 自动选择",
+                "♻️ 手动选择",
                 "🎯 全球直连"
-            ], 
-            "providers": [ "sub_provider_1" ]
+            ]
         },
         {
             "type": "selector",
@@ -97,10 +96,9 @@
             ]
         },
         {
-            "type": "urltest",
-            "tag": "♻️ 自动选择",
-            "providers": [ "sub_provider_1" ],
-            "tolerance": 50
+            "type": "selector",
+            "tag": "♻️ 手动选择",
+            "providers": [ "sub_provider_1" ]
         },
         {
             "type": "selector",
