@@ -44,7 +44,9 @@ jobs:
         curl -O https://gist.githubusercontent.com/KerryJi/${{ secrets.GIST_ID }}/raw/suburl.txt
         SUBSCRIPTION_URLS=$(paste -sd '|' suburl.txt)
         python3 update_subscription.py -s "${SUBSCRIPTION_URLS}" -c "${CONFIG2}" -e "${CHOOSE_END}" -t "clash" -o "cla_link.txt" -l True
-        jq '.outbound_providers[0].download_url = \"$(<cla_link.txt)\"' outbound_providers.json > temp_outbound_providers.json
+        cla_link="$(<cla_link.txt)"
+        echo $cla_link
+        jq '.outbound_providers[0].download_url = ${cla_link}' outbound_providers.json > temp_outbound_providers.json
         jq -s '.[0] * .[1] * .[2] * .[3]' "base/sbp_base_ruleset.json" "base/dns_p.json" "base/outbounds_use_provider.json" "temp_outbound_providers.json" > "sbp_ruleset2.json"
     - name: Push to gist
       uses: exuanbo/actions-deploy-gist@v1
