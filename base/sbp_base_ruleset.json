@@ -44,7 +44,8 @@
         "rule_set": [
           "win-spy"
         ],
-        "server": "dns_block"
+        "server": "dns_block",
+        "disable_cache": true
       },
       {
         "rule_set": [
