@@ -62,7 +62,7 @@ jobs:
     - name: Unzip artifact
       run: |
         sudo apt-get install unzip -y
-        unzip ./downloaded_artifact/${{ github.event.inputs.artifact_name }}.zip -d ./extracted_artifact
+        unzip ./downloaded_artifact/${{ github.event.inputs.artifact_name }} -d ./extracted_artifact
 
     - name: Re-compress to tar.gz
       run: |
