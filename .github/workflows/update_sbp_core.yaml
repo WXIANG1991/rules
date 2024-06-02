@@ -6,7 +6,7 @@ on:
       workflow_id:
         description: 'Workflow file name or ID'
         required: true
-        default: 'core.yaml'
+        default: 'core.yml'
       artifact_name:
         description: 'Name of the artifact to download'
         required: true
@@ -51,12 +51,13 @@ jobs:
         echo "latest_run_id=$latest_run_id" >> $GITHUB_ENV
 
     - name: Download artifact from another repository
-      uses: actions/download-artifact@v2
+      uses: actions/download-artifact@v4
       with:
         repository: ${{ env.owner }}/${{ env.repo }}
         workflow_run_id: ${{ env.latest_run_id }}
-        name: ${{ github.event.inputs.artifact_name }}
+        # name: ${{ github.event.inputs.artifact_name }}
         path: ./downloaded_artifact
+        branch: ${{ github.event.inputs.workflow_branch }}  # 指定要下载的分支
 
     - name: Unzip artifact
       run: |
