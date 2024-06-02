@@ -231,14 +231,14 @@ if __name__ == "__main__":
         basic = backend + 'target=' + target + "&url=" + url + "&insert=" + insert
         # encode = urllib.parse.quote(basic)
         print("\n====================================================\n\n已生成转换链接，复制至客户端下载配置即可使用:\n")
-        print(basic)
+        # print(basic)
 
     if choose == "2":
         print("\n====================================================\n\n*使用进阶模式1*")
         high_mod()
 
         print("\n\n====================================================\n已生成转换链接，复制至客户端下载配置即可使用:\n")
-        print(result)
+        # print(result)
 
     if choose == "3":
         print("\n*使用进阶模式2*")
@@ -246,7 +246,7 @@ if __name__ == "__main__":
         high_mod2()
 
         print("\n\n====================================================\n已生成转换链接，复制至客户端下载配置即可使用:\n")
-        print(result)
+        # print(result)
 
     if choose == "4":
         print("\n*使用进阶模式3·全部选项自定义*")
