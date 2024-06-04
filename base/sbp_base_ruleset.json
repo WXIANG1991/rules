@@ -8,7 +8,7 @@
     "servers": [
       {
         "tag": "dns_block",
-        "address": "rcode://refused"
+        "address": "rcode://success"
       },
       {
         "tag": "dns_direct",
