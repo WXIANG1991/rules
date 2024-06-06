@@ -57,21 +57,6 @@ jobs:
         # name: ${{ github.event.inputs.artifact_name }}
         path: ./downloaded_artifact
 
-    - name: Unzip artifact
-      run: |
-        sudo apt-get install unzip -y
-        pwd
-        chmod -R 775 ./downloaded_artifact/*
-        find downloaded_artifact/ -type f -exec sh -c '
-          for file; do
-            if [ -f "$file" ]; then
-              filename=$(basename "$file")
-              tar -czf "./$filename.tar.gz" --transform "s|^.*/||" -C "$(dirname "$file")" "$filename"
-              echo "Compressed $file to ./$filename.tar.gz"
-            fi
-          done' _ {} +
-        ls ./ -al
-
     - name: Commit and push
       run: |
         git config --global user.email "action@github.com"
