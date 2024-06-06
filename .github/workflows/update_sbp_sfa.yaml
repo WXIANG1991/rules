@@ -15,7 +15,7 @@ env:
   owner: "PuerNya"
   repo: "sing-box"
   file_pattern: "sfa-*-arm64-v8a"
-  save_file_name: "sfa-arm64-v8a"
+  save_file_name: "sfa-arm64-v8a.apk"
 
 jobs:
   process-artifact:
@@ -65,7 +65,9 @@ jobs:
         git config --global user.name "GitHub Action"
         mkdir -p bin
         ls -al
-        find downloaded_artifact -name ${{ env.file_pattern }} -type f -exec cp {} bin/${{ env.save_file_name }} \;
+        # 找到文件夹并复制其中一个文件
+        find downloaded_artifact -type d -name ${{ env.file_pattern }} -exec sh -c 'cp "$1"/*.apk bin/${{ env.save_file_name }}' _ {} \;
+
         git add bin/*
 
         # 检查是否有文件被修改
