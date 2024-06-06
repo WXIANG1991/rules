@@ -1,0 +1,95 @@
+name: Download, Process, and Upload Artifact
+
+on:
+  workflow_dispatch:
+    inputs:
+      workflow_id:
+        description: 'Workflow file name or ID'
+        required: true
+        default: 'sfa.yml'
+      workflow_branch:
+        description: 'workflow_branch'
+        required: true
+        default: 'building'
+env:
+  owner: "PuerNya"
+  repo: "sing-box"
+
+jobs:
+  process-artifact:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout this repository
+      uses: actions/checkout@v2
+
+    - name: Get latest workflow run ID
+      id: get_workflow_run_id
+      run: |
+        owner="${{ env.owner }}"
+        repo="${{ env.repo }}"
+        workflow_id="${{ github.event.inputs.workflow_id }}"
+        branch="${{ github.event.inputs.workflow_branch }}"
+        
+        echo "Fetching latest workflow run ID for $owner/$repo/workflows/$workflow_id"
+
+        response=$(curl -s \
+          "https://api.github.com/repos/$owner/$repo/actions/workflows/$workflow_id/runs?branch=$branch&status=completed&per_page=1")
+
+        echo "Response: $response"
+
+        latest_run_id=$(echo "$response" | jq -r '.workflow_runs[0].id')
+
+        if [ "$latest_run_id" == "null" ]; then
+          echo "No workflow run ID found."
+          exit 1
+        fi
+
+        echo "Latest workflow run ID: $latest_run_id"
+        echo "latest_run_id=$latest_run_id" >> $GITHUB_ENV
+
+    - name: Download artifact from another repository
+      uses: actions/download-artifact@v4
+      with:
+        repository: ${{ env.owner }}/${{ env.repo }}
+        run-id: ${{ env.latest_run_id }}
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        pattern: sfa-*-arm64-v8a
+        # name: ${{ github.event.inputs.artifact_name }}
+        path: ./downloaded_artifact
+
+    - name: Unzip artifact
+      run: |
+        sudo apt-get install unzip -y
+        pwd
+        chmod -R 775 ./downloaded_artifact/*
+        find downloaded_artifact/ -type f -exec sh -c '
+          for file; do
+            if [ -f "$file" ]; then
+              filename=$(basename "$file")
+              tar -czf "./$filename.tar.gz" --transform "s|^.*/||" -C "$(dirname "$file")" "$filename"
+              echo "Compressed $file to ./$filename.tar.gz"
+            fi
+          done' _ {} +
+        ls ./ -al
+
+    - name: Commit and push
+      run: |
+        git config --global user.email "action@github.com"
+        git config --global user.name "GitHub Action"
+        mkdir -p bin
+        cp sfa* bin/
+        git add bin/*
+
+        # 检查是否有文件被修改
+        if git diff --staged --quiet; then
+          echo "No changes to commit"
+        else
+          git commit -m "Update bin"
+          git push
+        fi
+
+    - name: Upload artifact to this repository
+      uses: actions/upload-artifact@v4
+      with:
+        name: sfa
+        path: ./sfa*
