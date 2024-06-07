@@ -142,6 +142,13 @@
         "url": "https://raw.githubusercontent.com/KerryJi/rules/main/rule/direct-self.srs"
       },
       {
+        "tag": "NTPService",
+        "type": "remote",
+        "format": "binary",
+        "download_detour": "🚀 节点选择",
+        "url": "https://raw.githubusercontent.com/KerryJi/rules/main/rule/NTPService.srs"
+      },
+      {
         "tag": "ai",
         "type": "remote",
         "format": "binary",
