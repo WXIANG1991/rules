@@ -1,1 +1,2 @@
 https://raw.githubusercontent.com/KerryJi/rules/main/rule/direct-self.list
+https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/NTPService/NTPService.list

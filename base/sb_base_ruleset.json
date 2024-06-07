@@ -17,7 +17,7 @@
           { "clash_mode": "Direct", "server": "dns_dnspod" },
           { "clash_mode": "Global", "server": "dns_proxy" },
           { "rule_set": [ "win-spy" ], "server": "dns_block" },
-          { "rule_set": [ "win-update", "microsoft-cn", "apple-cn", "google-cn", "cn", "private","direct-self" ], "query_type": [ "A", "AAAA" ], "server": "dns_dnspod" }
+          { "rule_set": [ "win-update", "microsoft-cn", "apple-cn", "google-cn", "cn", "private","direct-self","NTPService" ], "query_type": [ "A", "AAAA" ], "server": "dns_dnspod" }
         ],
         "final": "dns_proxy",
         "strategy": "prefer_ipv4",
@@ -78,6 +78,13 @@
                 "format": "binary",
                 "download_detour": "🚀 节点选择",
                 "url": "https://raw.githubusercontent.com/KerryJi/rules/main/rule/direct-self.srs"
+            },
+            {
+                "tag": "NTPService",
+                "type": "remote",
+                "format": "binary",
+                "download_detour": "🚀 节点选择",
+                "url": "https://raw.githubusercontent.com/KerryJi/rules/main/rule/NTPService.srs"
             },
             {
                 "tag": "ai",
