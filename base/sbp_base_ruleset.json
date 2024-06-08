@@ -25,6 +25,10 @@
           "https://9.9.9.9/dns-query"
         ],
         "detour": "🚀 节点选择"
+      },
+      {
+        "tag": "dns_fakeip",
+        "address": "fakeip"
       }
     ],
     "rules": [
@@ -65,6 +69,16 @@
         "server": "dns_direct"
       },
       {
+        "rule_set": [
+          "proxy"
+        ],
+        "query_type": [
+          "A",
+          "AAAA"
+        ],
+        "server": "dns_fakeip"
+      },
+      {
         "fallback_rules": [
           {
             "rule_set": [
@@ -84,11 +98,11 @@
     "disable_cache": false,
     "disable_expire": false,
     "fakeip": {
-      "enabled": false,
+      "enabled": true,
       "inet4_range": "198.18.0.0/15",
       "inet6_range": "fc00::/18"
     },
-    "mapping_override": false
+    "mapping_override": true
   },
   "ntp": {
     "enabled": false,
@@ -117,7 +131,7 @@
   "experimental": {
     "cache_file": {
       "enabled": true,
-      "store_fakeip": false
+      "store_fakeip": true
     },
     "clash_api": {
       "external_controller": "127.0.0.1:9090",
@@ -128,6 +142,13 @@
   "route": {
     "auto_detect_interface": true,
     "rule_set": [
+      {
+        "tag": "proxy",
+        "type": "remote",
+        "format": "binary",
+        "path": "./ruleset/proxy.srs",
+        "url": "https://raw.githubusercontent.com/DustinWin/ruleset_geodata/sing-box-ruleset/proxy.srs"
+      },
       {
         "tag": "private",
         "type": "remote",
