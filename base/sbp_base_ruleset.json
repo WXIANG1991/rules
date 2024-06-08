@@ -55,7 +55,8 @@
           "google-cn",
           "cn",
           "private",
-          "direct-self"
+          "direct-self",
+          "NTPService"
         ],
         "query_type": [
           "A",
