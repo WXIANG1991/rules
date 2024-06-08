@@ -10,14 +10,16 @@
           { "tag": "dns_alidns", "address": "h3://223.5.5.5/dns-query", "detour": "DIRECT" },
           { "tag": "dns_dnspod", "address": "https://1.12.12.12/dns-query", "detour": "DIRECT" },
           { "tag": "dns_proxy", "address": "h3://1.0.0.1/dns-query", "detour": "🚀 节点选择" },
-          { "tag": "dns_proxy2", "address": "https://9.9.9.9/dns-query", "detour": "🚀 节点选择" }
+          { "tag": "dns_proxy2", "address": "https://9.9.9.9/dns-query", "detour": "🚀 节点选择" },
+          { "tag": "dns_fakeip", "address": "fakeip" }
         ],
         "rules": [
           { "outbound": "any", "server": "dns_dnspod" },
           { "clash_mode": "Direct", "server": "dns_dnspod" },
           { "clash_mode": "Global", "server": "dns_proxy" },
           { "rule_set": [ "win-spy" ], "server": "dns_block" },
-          { "rule_set": [ "win-update", "microsoft-cn", "apple-cn", "google-cn", "cn", "private","direct-self","NTPService" ], "query_type": [ "A", "AAAA" ], "server": "dns_dnspod" }
+          { "rule_set": [ "win-update", "microsoft-cn", "apple-cn", "google-cn", "cn", "private","direct-self","NTPService" ], "query_type": [ "A", "AAAA" ], "server": "dns_dnspod" },
+          { "rule_set": [ "proxy" ], "query_type": [ "A", "AAAA" ], "server": "dns_fakeip" }
         ],
         "final": "dns_proxy",
         "strategy": "prefer_ipv4",
@@ -25,7 +27,7 @@
         "reverse_mapping": true,
         "disable_cache": false,
         "disable_expire": false,
-        "fakeip": { "enabled": false, "inet4_range": "198.18.0.0/15", "inet6_range": "fc00::/18" }
+        "fakeip": { "enabled": true, "inet4_range": "198.18.0.0/15", "inet6_range": "fc00::/18" }
     },
     "ntp": {
         "enabled": false,
@@ -54,7 +56,7 @@
     "experimental": {
         "cache_file": {
             "enabled": true,
-            "store_fakeip": false
+            "store_fakeip": true
         },
         "clash_api": {
             "external_controller": "127.0.0.1:9090",
@@ -65,6 +67,13 @@
     "route": {
         "auto_detect_interface": true,
         "rule_set": [
+            {
+                "tag": "proxy",
+                "type": "remote",
+                "format": "binary",
+                "path": "./ruleset/proxy.srs",
+                "url": "https://raw.githubusercontent.com/DustinWin/ruleset_geodata/sing-box-ruleset/proxy.srs"
+            },
             {
                 "tag": "private",
                 "type": "remote",
