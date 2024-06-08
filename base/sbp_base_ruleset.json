@@ -70,7 +70,8 @@
       {
         "rule_set": [
           "proxy",
-          "google-cn"
+          "google-cn",
+          "proxy-self"
         ],
         "query_type": [
           "A",
@@ -102,7 +103,7 @@
       "inet4_range": "198.18.0.0/15",
       "inet6_range": "fc00::/18"
     },
-    "mapping_override": false
+    "mapping_override": true
   },
   "ntp": {
     "enabled": false,
@@ -162,6 +163,13 @@
         "format": "binary",
         "download_detour": "🚀 节点选择",
         "url": "https://raw.githubusercontent.com/KerryJi/rules/main/rule/direct-self.srs"
+      },
+      {
+        "tag": "proxy-self",
+        "type": "remote",
+        "format": "binary",
+        "download_detour": "🚀 节点选择",
+        "url": "https://raw.githubusercontent.com/KerryJi/rules/main/rule/proxy-self.srs"
       },
       {
         "tag": "NTPService",
