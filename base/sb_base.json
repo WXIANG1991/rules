@@ -16,7 +16,7 @@
           { "outbound": "any", "server": "dns_dnspod" },
           { "clash_mode": "Direct", "server": "dns_dnspod" },
           { "clash_mode": "Global", "server": "dns_proxy" },
-          { "rule_set": [ "microsoft-cn", "apple-cn", "google-cn", "cn", "private","direct-self" ], "query_type": [ "A", "AAAA" ], "server": "dns_dnspod" }
+          { "rule_set": [ "microsoft-cn", "apple-cn", "cn", "private","direct-self" ], "query_type": [ "A", "AAAA" ], "server": "dns_dnspod" }
         ],
         "final": "dns_proxy",
         "strategy": "prefer_ipv4",

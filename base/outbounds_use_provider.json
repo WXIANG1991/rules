@@ -52,7 +52,7 @@
             },
             {
                 "rule_set": "google-cn",
-                "outbound": "🎯 全球直连"
+                "outbound": "🚀 节点选择"
             },
             {
                 "rule_set": "apple-cn",

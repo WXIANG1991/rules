@@ -18,8 +18,8 @@
           { "clash_mode": "Direct", "server": "dns_dnspod" },
           { "clash_mode": "Global", "server": "dns_proxy" },
           { "rule_set": [ "win-spy" ], "server": "dns_block" },
-          { "rule_set": [ "win-update", "microsoft-cn", "apple-cn", "google-cn", "cn", "private","direct-self","NTPService" ], "query_type": [ "A", "AAAA" ], "server": "dns_dnspod" },
-          { "rule_set": [ "proxy" ], "query_type": [ "A", "AAAA" ], "server": "dns_fakeip" }
+          { "rule_set": [ "win-update", "microsoft-cn", "apple-cn", "cn", "private","direct-self","NTPService" ], "query_type": [ "A", "AAAA" ], "server": "dns_dnspod" },
+          { "rule_set": [ "proxy", "google-cn" ], "query_type": [ "A", "AAAA" ], "server": "dns_fakeip" }
         ],
         "final": "dns_proxy",
         "strategy": "prefer_ipv4",
