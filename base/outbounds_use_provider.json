@@ -27,6 +27,14 @@
                 "outbound": "🚀 节点选择"
             },
             {
+                "rule_set": "google-cn",
+                "outbound": "🚀 节点选择"
+            },
+            {
+                "rule_set": "proxy",
+                "outbound": "🚀 节点选择"
+            },
+            {
                 "rule_set": "NTPService",
                 "outbound": "🎯 全球直连"
             },
@@ -55,20 +63,12 @@
                 "outbound": "🎯 全球直连"
             },
             {
-                "rule_set": "google-cn",
-                "outbound": "🚀 节点选择"
-            },
-            {
                 "rule_set": "apple-cn",
                 "outbound": "🎯 全球直连"
             },
             {
                 "rule_set": "cn",
                 "outbound": "🎯 全球直连"
-            },
-            {
-                "rule_set": "proxy",
-                "outbound": "🚀 节点选择"
             },
             {
                 "rule_set": "cn-ip",
