@@ -56,7 +56,6 @@
           "win-update",
           "microsoft-cn",
           "apple-cn",
-          "google-cn",
           "cn",
           "private",
           "direct-self",
@@ -70,7 +69,8 @@
       },
       {
         "rule_set": [
-          "proxy"
+          "proxy",
+          "google-cn"
         ],
         "query_type": [
           "A",
