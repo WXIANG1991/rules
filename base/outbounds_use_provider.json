@@ -31,10 +31,6 @@
                 "outbound": "🚀 节点选择"
             },
             {
-                "rule_set": "proxy",
-                "outbound": "🚀 节点选择"
-            },
-            {
                 "rule_set": "NTPService",
                 "outbound": "🎯 全球直连"
             },
@@ -44,6 +40,10 @@
             },
             {
                 "rule_set": "ai",
+                "outbound": "🚀 节点选择"
+            },
+            {
+                "rule_set": "proxy",
                 "outbound": "🚀 节点选择"
             },
             {
