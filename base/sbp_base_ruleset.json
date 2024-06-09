@@ -46,7 +46,8 @@
       },
       {
         "rule_set": [
-          "win-spy"
+          "win-spy",
+          "ads"
         ],
         "server": "dns_block",
         "disable_cache": true
@@ -133,6 +134,13 @@
   "route": {
     "auto_detect_interface": true,
     "rule_set": [
+      {
+        "tag": "ads",
+        "type": "remote",
+        "format": "binary",
+        "path": "./ruleset/ads.srs",
+        "url": "https://raw.githubusercontent.com/DustinWin/ruleset_geodata/sing-box-ruleset/ads.srs"
+      },
       {
         "tag": "proxy",
         "type": "remote",
