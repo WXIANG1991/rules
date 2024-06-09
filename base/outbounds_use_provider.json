@@ -27,6 +27,14 @@
                 "outbound": "🚀 节点选择"
             },
             {
+                "rule_set": "win-spy",
+                "outbound": "REJECT"
+            },
+            {
+                "rule_set": "ads",
+                "outbound": "REJECT"
+            },
+            {
                 "rule_set": "google-cn",
                 "outbound": "🚀 节点选择"
             },
@@ -49,10 +57,6 @@
             {
                 "rule_set": "onedrive",
                 "outbound": "Ⓜ️ OneDrive"
-            },
-            {
-                "rule_set": "win-spy",
-                "outbound": "REJECT"
             },
             {
                 "rule_set": "win-update",

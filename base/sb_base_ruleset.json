@@ -17,7 +17,7 @@
           { "outbound": "any", "server": "dns_dnspod" },
           { "clash_mode": "Direct", "server": "dns_dnspod" },
           { "clash_mode": "Global", "server": "dns_proxy" },
-          { "rule_set": [ "win-spy" ], "server": "dns_block" , "disable_cache":true},
+          { "rule_set": [ "win-spy", "ads" ], "server": "dns_block" , "disable_cache":true},
           { "rule_set": [ "proxy", "google-cn", "proxy-self" ], "query_type": [ "A", "AAAA" ], "server": "dns_fakeip", "disable_cache":true },
           { "rule_set": [ "win-update", "microsoft-cn", "apple-cn", "cn", "private","direct-self","NTPService" ], "query_type": [ "A", "AAAA" ], "server": "dns_dnspod" }
         ],
@@ -67,6 +67,13 @@
     "route": {
         "auto_detect_interface": true,
         "rule_set": [
+            {
+                "tag": "ads",
+                "type": "remote",
+                "format": "binary",
+                "path": "./ruleset/ads.srs",
+                "url": "https://raw.githubusercontent.com/DustinWin/ruleset_geodata/sing-box-ruleset/ads.srs"
+            },
             {
                 "tag": "proxy",
                 "type": "remote",
