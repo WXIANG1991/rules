@@ -80,19 +80,6 @@
           "AAAA"
         ],
         "server": "dns_direct"
-      },
-      {
-        "fallback_rules": [
-          {
-            "rule_set": [
-              "cn-ip"
-            ],
-            "invert": true
-          }
-        ],
-        "server": "dns_proxy",
-        "rewrite_ttl": 1,
-        "disable_cache": true
       }
     ],
     "final": "dns_proxy",
