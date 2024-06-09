@@ -71,14 +71,14 @@
                 "tag": "ads",
                 "type": "remote",
                 "format": "binary",
-                "path": "./ruleset/ads.srs",
+                "download_detour": "🚀 节点选择",
                 "url": "https://raw.githubusercontent.com/DustinWin/ruleset_geodata/sing-box-ruleset/ads.srs"
             },
             {
                 "tag": "proxy",
                 "type": "remote",
                 "format": "binary",
-                "path": "./ruleset/proxy.srs",
+                "download_detour": "🚀 节点选择",
                 "url": "https://raw.githubusercontent.com/DustinWin/ruleset_geodata/sing-box-ruleset/proxy.srs"
             },
             {
