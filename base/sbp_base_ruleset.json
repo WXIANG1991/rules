@@ -46,8 +46,7 @@
       },
       {
         "rule_set": [
-          "win-spy",
-          "ads"
+          "win-spy"
         ],
         "server": "dns_block",
         "disable_cache": true
@@ -134,13 +133,6 @@
   "route": {
     "auto_detect_interface": true,
     "rule_set": [
-      {
-        "tag": "ads",
-        "type": "remote",
-        "format": "binary",
-        "download_detour": "🚀 节点选择",
-        "url": "https://raw.githubusercontent.com/DustinWin/ruleset_geodata/sing-box-ruleset/ads.srs"
-      },
       {
         "tag": "proxy",
         "type": "remote",
