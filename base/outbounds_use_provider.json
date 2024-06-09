@@ -31,10 +31,6 @@
                 "outbound": "REJECT"
             },
             {
-                "rule_set": "ads",
-                "outbound": "REJECT"
-            },
-            {
                 "rule_set": "google-cn",
                 "outbound": "🚀 节点选择"
             },
