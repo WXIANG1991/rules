@@ -73,7 +73,7 @@
           "cn",
           "private",
           "direct-self",
-          "NTPService"
+          "ntpservice"
         ],
         "query_type": [
           "A",
@@ -162,7 +162,7 @@
         "url": "https://raw.githubusercontent.com/KerryJi/rules/main/rule/proxy-self.srs"
       },
       {
-        "tag": "NTPService",
+        "tag": "ntpservice",
         "type": "remote",
         "format": "binary",
         "download_detour": "🚀 节点选择",

@@ -35,7 +35,7 @@
                 "outbound": "🚀 节点选择"
             },
             {
-                "rule_set": "NTPService",
+                "rule_set": "ntpservice",
                 "outbound": "🎯 全球直连"
             },
             {
