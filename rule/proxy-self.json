@@ -2,6 +2,7 @@
   "rules": [
     {
       "domain_suffix": [
+        "chatanywhere.cn",
         "google.cn",
         "googleapis.cn",
         "googleapis.com",
