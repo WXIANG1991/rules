@@ -43,21 +43,6 @@ jobs:
         jq -s '.[0] * .[1]' "base/sb_base_ruleset.json" "base/dns_p.json" > "base/sbp_base_ruleset.json"
         cp -f sb_ruleset.ini sbp_ruleset.ini
         sed -i 's/sb_base_ruleset/sbp_base_ruleset/g' sbp_ruleset.ini
-    - name: create spb_ruleset2.json
-      run: |
-        curl -O https://gist.githubusercontent.com/KerryJi/${{ secrets.GIST_ID }}/raw/outbound_providers.json
-        curl -O https://gist.githubusercontent.com/KerryJi/${{ secrets.GIST_ID }}/raw/suburl.txt
-        SUBSCRIPTION_URLS=$(paste -sd '|' suburl.txt)
-        python3 update_subscription.py -s "${SUBSCRIPTION_URLS}" -c "${CONFIG2}" -e "${CHOOSE_END}" -t "clash" -o "cla_link.txt" -l True
-        jq --arg cla_link "$(<cla_link.txt)" '.outbound_providers[0].download_url = $cla_link' outbound_providers.json > temp_outbound_providers.json
-        jq -s '.[0] * .[1] * .[2] * .[3]' "base/sbp_base_ruleset.json" "base/dns_p.json" "base/outbounds_use_provider.json" "temp_outbound_providers.json" > "sbp_ruleset2.json"
-    - name: Push to gist
-      uses: exuanbo/actions-deploy-gist@v1
-      with:
-        token: ${{ secrets.GIST_TOKEN }}
-        gist_id:  ${{ secrets.GIST_ID }}
-        file_path: sbp_ruleset2.json
-        file_type: text
     - name: Commit and push config.json/srs
       run: |
         git config --global user.email "action@github.com"
@@ -84,6 +69,21 @@ jobs:
         # - python3 update_subscription_script.py -s "${SUBSCRIPTION_URLS}" -c "${CONFIG2}" -e "${CHOOSE_END}" -t "singbox" -o "singbox2.json"
         python3 update_subscription.py -s "${SUBSCRIPTION_URLS}" -c "${CONFIG3}" -e "${CHOOSE_END}" -t "singbox" -o "sb_ruleset.json"
         python3 update_subscription.py -s "${SUBSCRIPTION_URLS}" -c "${CONFIG4}" -e "${CHOOSE_END}" -t "singbox" -o "sbp_ruleset.json"
+    - name: create spb_ruleset2.json
+      run: |
+        curl -O https://gist.githubusercontent.com/KerryJi/${{ secrets.GIST_ID }}/raw/outbound_providers.json
+        curl -O https://gist.githubusercontent.com/KerryJi/${{ secrets.GIST_ID }}/raw/suburl.txt
+        SUBSCRIPTION_URLS=$(paste -sd '|' suburl.txt)
+        python3 update_subscription.py -s "${SUBSCRIPTION_URLS}" -c "${CONFIG2}" -e "${CHOOSE_END}" -t "clash" -o "cla_link.txt" -l True
+        jq --arg cla_link "$(<cla_link.txt)" '.outbound_providers[0].download_url = $cla_link' outbound_providers.json > temp_outbound_providers.json
+        jq -s '.[0] * .[1] * .[2] * .[3]' "sbp_base_ruleset.json" "base/dns_p.json" "base/outbounds_use_provider.json" "temp_outbound_providers.json" > "sbp_ruleset2.json"
+    - name: Push to gist
+      uses: exuanbo/actions-deploy-gist@v1
+      with:
+        token: ${{ secrets.GIST_TOKEN }}
+        gist_id:  ${{ secrets.GIST_ID }}
+        file_path: sbp_ruleset2.json
+        file_type: text
     - name: Push to gist
       uses: exuanbo/actions-deploy-gist@v1
       with:

@@ -18,7 +18,7 @@
           { "clash_mode": "Direct", "server": "dns_dnspod" },
           { "clash_mode": "Global", "server": "dns_proxy" },
           { "rule_set": [ "win-spy" ], "server": "dns_block" , "disable_cache":true},
-          { "rule_set": [ "proxy", "google-cn", "proxy-self" ], "query_type": [ "A", "AAAA" ], "server": "dns_fakeip", "disable_cache":true },
+          { "rule_set": [ "proxy", "google-cn", "proxy-self", "telegram", "ai" ], "query_type": [ "A", "AAAA" ], "server": "dns_fakeip", "disable_cache":true },
           { "rule_set": [ "win-update", "microsoft-cn", "apple-cn", "cn", "private","direct-self","ntpservice" ], "query_type": [ "A", "AAAA" ], "server": "dns_dnspod" }
         ],
         "final": "dns_proxy",
@@ -115,6 +115,13 @@
                 "format": "binary",
                 "download_detour": "🚀 节点选择",
                 "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/onedrive.srs"
+            },
+            {
+                "tag": "telegram",
+                "type": "remote",
+                "format": "binary",
+                "download_detour": "🚀 节点选择",
+                "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/telegram.srs"
             },
             {
                 "tag": "win-spy",

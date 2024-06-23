@@ -11,7 +11,7 @@
       { "clash_mode": "Direct", "server": "dns_direct" },
       { "clash_mode": "Global", "server": "dns_proxy" },
       { "rule_set": [ "win-spy" ], "server": "dns_block", "disable_cache":true },
-      { "rule_set": [ "proxy", "google-cn", "proxy-self", "ai" ], "query_type": [ "A", "AAAA" ], "server": "dns_fakeip", "disable_cache":true },
+      { "rule_set": [ "proxy", "google-cn", "proxy-self", "telegram", "ai"], "query_type": [ "A", "AAAA" ], "server": "dns_fakeip", "disable_cache":true },
       { "rule_set": [ "win-update", "microsoft-cn", "apple-cn", "cn", "private", "direct-self", "ntpservice" ], "query_type": [ "A", "AAAA" ], "server": "dns_direct" }
     ],
     "final": "dns_proxy",
