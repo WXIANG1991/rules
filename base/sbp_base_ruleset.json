@@ -191,6 +191,13 @@
         "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/telegram.srs"
       },
       {
+        "tag": "telegram-ip",
+        "type": "remote",
+        "format": "binary",
+        "download_detour": "🚀 节点选择",
+        "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geoip/telegram.srs"
+      },
+      {
         "tag": "win-spy",
         "type": "remote",
         "format": "binary",
