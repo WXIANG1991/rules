@@ -56,6 +56,7 @@
           "proxy",
           "google-cn",
           "proxy-self",
+          "telegram",
           "ai"
         ],
         "query_type": [
@@ -181,6 +182,13 @@
         "format": "binary",
         "download_detour": "🚀 节点选择",
         "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/onedrive.srs"
+      },
+      {
+        "tag": "telegram",
+        "type": "remote",
+        "format": "binary",
+        "download_detour": "🚀 节点选择",
+        "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/telegram.srs"
       },
       {
         "tag": "win-spy",
