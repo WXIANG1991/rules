@@ -53,21 +53,6 @@
       },
       {
         "rule_set": [
-          "proxy",
-          "google-cn",
-          "proxy-self",
-          "telegram",
-          "ai"
-        ],
-        "query_type": [
-          "A",
-          "AAAA"
-        ],
-        "server": "dns_fakeip",
-        "disable_cache": true
-      },
-      {
-        "rule_set": [
           "win-update",
           "microsoft-cn",
           "apple-cn",
