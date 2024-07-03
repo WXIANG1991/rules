@@ -83,7 +83,7 @@
         "disable_cache": false
       }
     ],
-    "final": "dns_proxy",
+    "final": "dns_direct",
     "strategy": "prefer_ipv4",
     "independent_cache": true,
     "reverse_mapping": true,
@@ -95,7 +95,7 @@
       "inet6_range": "fc00::/18"
     },
     "mapping_override": true,
-    "lazy_cache": false
+    "lazy_cache": true
   },
   "ntp": {
     "enabled": false,
