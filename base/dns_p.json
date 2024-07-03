@@ -12,9 +12,10 @@
       { "clash_mode": "Global", "server": "dns_proxy" },
       { "rule_set": [ "win-spy" ], "server": "dns_block", "disable_cache":true },
       { "rule_set": [ "win-update", "microsoft-cn", "apple-cn", "cn", "private", "direct-self", "ntpservice" ], "query_type": [ "A", "AAAA" ], "server": "dns_direct" },
-      { "rule_set": [ "proxy", "google-cn", "proxy-self", "telegram", "ai"], "query_type": [ "A", "AAAA" ], "server": "dns_proxy", "disable_cache":false }
+      { "rule_set": [ "proxy", "google-cn", "proxy-self", "telegram", "ai"], "query_type": [ "A", "AAAA" ], "server": "dns_proxy", "disable_cache":false },
+      { "fallback_rules": [ { "rule_set": [ "cn-ip" ], "server": "dns_direct" }, { "match_all": true, "server": "dns_proxy", "rewrite_ttl": 0 }, { "match_all": true } ], "server": "dns_proxy" }
     ],
-    "final": "dns_direct",
+    "final": "dns_proxy",
     "strategy": "prefer_ipv4",
     "independent_cache": true,
     "reverse_mapping": true,
