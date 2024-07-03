@@ -83,7 +83,7 @@
         "disable_cache": false
       }
     ],
-    "final": "dns_proxy",
+    "final": "dns_direct",
     "strategy": "prefer_ipv4",
     "independent_cache": true,
     "reverse_mapping": true,
