@@ -49,7 +49,8 @@
           "win-spy"
         ],
         "server": "dns_block",
-        "disable_cache": true
+        "disable_cache": true,
+        "rewrite_ttl": 0
       },
       {
         "rule_set": [
@@ -80,7 +81,7 @@
           "AAAA"
         ],
         "server": "dns_proxy",
-        "disable_cache": false
+        "rewrite_ttl": 0
       },
       {
         "fallback_rules": [
