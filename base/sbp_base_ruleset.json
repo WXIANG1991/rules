@@ -87,7 +87,7 @@
         "fallback_rules": [
           {
             "rule_set": [
-              "cnip"
+              "cn-ip"
             ],
             "server": "dns_direct"
           },
