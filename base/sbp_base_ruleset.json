@@ -102,7 +102,7 @@
       }
     ],
     "final": "dns_direct",
-    "strategy": "prefer_ipv6",
+    "strategy": "prefer_ipv4",
     "independent_cache": true,
     "reverse_mapping": true,
     "disable_cache": false,
