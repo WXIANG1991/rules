@@ -109,6 +109,12 @@
                 "format": "binary",
                 "download_detour": "🚀 节点选择",
                 "url": "https://raw.githubusercontent.com/DustinWin/ruleset_geodata/sing-box-ruleset/ai.srs"
+            },{
+                "tag": "azure",
+                "type": "remote",
+                "format": "binary",
+                "download_detour": "🚀 节点选择",
+                "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/azure.srs"
             },
             {
                 "tag": "onedrive",
