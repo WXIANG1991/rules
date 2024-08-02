@@ -1,18 +1,6 @@
 {
     "outbounds": [
         {
-            "type": "direct",
-            "tag": "DIRECT"
-        },
-        {
-            "type": "block",
-            "tag": "REJECT"
-        },
-        {
-            "type": "dns",
-            "tag": "dns-out"
-        },
-        {
             "type": "selector",
             "tag": "🚀 节点选择",
             "outbounds": [
@@ -55,6 +43,18 @@
             "outbounds": [
                 "DIRECT"
             ]
+        },
+        {
+            "type": "direct",
+            "tag": "DIRECT"
+        },
+        {
+            "type": "block",
+            "tag": "REJECT"
+        },
+        {
+            "type": "dns",
+            "tag": "dns-out"
         }
     ]
 }
