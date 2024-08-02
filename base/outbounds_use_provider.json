@@ -31,7 +31,7 @@
         {
             "type": "selector",
             "tag": "🌐 国外流量",
-            "providers": [ "sub_provider_1" ]
+            "providers": [ "sub_provider_vless", "sub_provider_xf" ]
         },
         {
             "type": "selector",
