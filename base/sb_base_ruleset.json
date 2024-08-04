@@ -70,6 +70,13 @@
         "override_android_vpn": true,
         "rule_set": [
             {
+                "tag": "fakeip-filter",
+                "type": "remote",
+                "format": "binary",
+                "download_detour": "🚀 节点选择",
+                "url": "https://raw.githubusercontent.com/DustinWin/ruleset_geodata/sing-box-ruleset/fakeip-filter.srs"
+            },
+            {
                 "tag": "proxy",
                 "type": "remote",
                 "format": "binary",
