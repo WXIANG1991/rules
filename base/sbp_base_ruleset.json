@@ -94,6 +94,16 @@
       },
       {
         "rule_set": [
+          "cn"
+        ],
+        "query_type": [
+          "A",
+          "AAAA"
+        ],
+        "server": "dns_direct"
+      },
+      {
+        "rule_set": [
           "proxy"
         ],
         "query_type": [
@@ -102,16 +112,6 @@
         ],
         "server": "dns_fakeip",
         "rewrite_ttl": 0
-      },
-      {
-        "rule_set": [
-          "cn"
-        ],
-        "query_type": [
-          "A",
-          "AAAA"
-        ],
-        "server": "dns_direct"
       },
       {
         "fallback_rules": [
