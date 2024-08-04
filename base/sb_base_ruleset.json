@@ -110,6 +110,13 @@
                 "url": "https://raw.githubusercontent.com/DustinWin/ruleset_geodata/sing-box-ruleset/ai.srs"
             },
             {
+                "tag": "tiktok",
+                "type": "remote",
+                "format": "binary",
+                "download_detour": "🚀 节点选择",
+                "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/tiktok.srs"
+            },
+            {
                 "tag": "bytedance",
                 "type": "remote",
                 "format": "binary",
