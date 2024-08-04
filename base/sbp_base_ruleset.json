@@ -68,7 +68,6 @@
           "win-update",
           "microsoft-cn",
           "apple-cn",
-          "cn",
           "private",
           "direct-self",
           "ntpservice",
@@ -82,7 +81,6 @@
       },
       {
         "rule_set": [
-          "proxy",
           "proxy-self",
           "telegram",
           "ai"
@@ -93,6 +91,27 @@
         ],
         "server": "dns_fakeip",
         "rewrite_ttl": 0
+      },
+      {
+        "rule_set": [
+          "proxy"
+        ],
+        "query_type": [
+          "A",
+          "AAAA"
+        ],
+        "server": "dns_fakeip",
+        "rewrite_ttl": 0
+      },
+      {
+        "rule_set": [
+          "cn"
+        ],
+        "query_type": [
+          "A",
+          "AAAA"
+        ],
+        "server": "dns_direct"
       },
       {
         "fallback_rules": [
