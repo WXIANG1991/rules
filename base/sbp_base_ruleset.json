@@ -53,21 +53,6 @@
       },
       {
         "rule_set": [
-          "proxy",
-          "google-cn",
-          "proxy-self",
-          "telegram",
-          "ai"
-        ],
-        "query_type": [
-          "A",
-          "AAAA"
-        ],
-        "server": "dns_fakeip",
-        "rewrite_ttl": 0
-      },
-      {
-        "rule_set": [
           "win-update",
           "microsoft-cn",
           "apple-cn",
@@ -81,6 +66,21 @@
           "AAAA"
         ],
         "server": "dns_direct"
+      },
+      {
+        "rule_set": [
+          "proxy",
+          "google-cn",
+          "proxy-self",
+          "telegram",
+          "ai"
+        ],
+        "query_type": [
+          "A",
+          "AAAA"
+        ],
+        "server": "dns_fakeip",
+        "rewrite_ttl": 0
       },
       {
         "fallback_rules": [
