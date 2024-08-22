@@ -117,7 +117,6 @@
             "rewrite_ttl": 0
           }
         ],
-        "allow_fallthrough": true,
         "server": "dns_proxy"
       }
     ],
