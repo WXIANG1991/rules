@@ -78,6 +78,8 @@ jobs:
         # jq --arg cla_link "$(<cla_link.txt)" '.outbound_providers[0].download_url = $cla_link' outbound_providers.json > temp_outbound_providers.json
         jq -s '.[0] * .[1] * .[2] * .[3]' "sbp_ruleset.json" "base/dns_p.json" "base/outbounds_use_provider.json" "outbound_providers.json" > "sbp_ruleset2.json"
         jq -s '.[0] * .[1]' "sbp_ruleset2.json" "base/inbounds_110.json" > "sbp_ruleset2_110.json"
+        jq 'del(.inbounds[1].auto_redirect)' inbounds_110_win.json
+        jq -s '.[0] * .[1]' "sbp_ruleset2.json" "base/inbounds_110_win.json" > "sbp_ruleset2_110_win.json"
     - name: Push to gist
       uses: exuanbo/actions-deploy-gist@v1
       with:
@@ -91,6 +93,13 @@ jobs:
         token: ${{ secrets.GIST_TOKEN }}
         gist_id:  ${{ secrets.GIST_ID }}
         file_path: sbp_ruleset2_110.json
+        file_type: text
+    - name: Push to gist
+      uses: exuanbo/actions-deploy-gist@v1
+      with:
+        token: ${{ secrets.GIST_TOKEN }}
+        gist_id:  ${{ secrets.GIST_ID }}
+        file_path: sbp_ruleset2_110_win.json
         file_type: text
     - name: Push to gist
       uses: exuanbo/actions-deploy-gist@v1
