@@ -11,10 +11,17 @@
         "address": "rcode://success"
       },
       {
-        "tag": "dns_direct",
+        "tag": "dns_direct_3party",
         "address": [
           "https://dns.alidns.com/dns-query",
           "https://doh.pub/dns-query"
+        ],
+        "detour": "DIRECT"
+      },
+      {
+        "tag": "dns_direct",
+        "address": [
+          "dhcp://auto"
         ],
         "detour": "DIRECT"
       },
