@@ -18,8 +18,10 @@
           { "clash_mode": "Direct", "server": "dns_dnspod" },
           { "clash_mode": "Global", "server": "dns_proxy" },
           { "rule_set": [ "win-spy" ], "server": "dns_block" , "disable_cache":true},
-          { "rule_set": [ "proxy", "google-cn", "proxy-self", "telegram", "ai" ], "query_type": [ "A", "AAAA" ], "server": "dns_fakeip", "disable_cache":true },
-          { "rule_set": [ "win-update", "microsoft-cn", "apple-cn", "cn", "private","direct-self","ntpservice" ], "query_type": [ "A", "AAAA" ], "server": "dns_dnspod" }
+          { "rule_set": [ "tiktok", "google-cn", "proxy-self", "telegram", "ai"], "query_type": [ "A", "AAAA" ], "server": "dns_fakeip", "disable_cache":true },
+          { "rule_set": [ "win-update", "microsoft-cn", "apple-cn", "private", "direct-self", "ntpservice", "bytedance" ], "query_type": [ "A", "AAAA" ], "server": "dns_dnspod" },
+          { "rule_set": [ "cn" ], "query_type": [ "A", "AAAA" ], "server": "dns_dnspod" },
+          { "rule_set": [ "proxy"], "query_type": [ "A", "AAAA" ], "server": "dns_fakeip", "rewrite_ttl": 0 }
         ],
         "final": "dns_proxy",
         "strategy": "prefer_ipv4",
@@ -43,9 +45,11 @@
             "listen": "0.0.0.0",
             "listen_port": 7890
         },
+        
         { "tag": "tun-in", "type": "tun", "interface_name": "sing-box", 
-        "inet4_address": "172.19.0.1/30", "inet6_address": "fdfe:dcba:9876::1/126", 
-        "auto_route": true, "strict_route": true, "stack": "mixed", "sniff": true }
+            "address": [ "172.19.0.1/30", "fdfe:dcba:9876::1/126" ],
+            "auto_redirect": true,
+            "auto_route": true, "strict_route": true, "stack": "mixed", "sniff": true }
     ],
     "experimental": {
         "cache_file": {
