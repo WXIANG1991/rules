@@ -79,13 +79,20 @@ jobs:
         jq -s '.[0] * .[1] * .[2] * .[3]' "sbp_ruleset.json" "base/dns_p.json" "base/outbounds_use_provider.json" "outbound_providers.json" > "sbp_ruleset2.json"
         jq -s '.[0] * .[1]' "sbp_ruleset2.json" "base/inbounds_109.json" > "sbp_ruleset2_109.json"
         jq 'del(.inbounds[1])' sbp_ruleset2.json > "sbp_ruleset2_win.json"
-        jq 'del(.inbounds[1].auto_redirect)' sb_ruleset.json > "sb_ruleset.json"
+        jq 'del(.inbounds[1].auto_redirect)' sb_ruleset.json > "sb_ruleset_wo_redir.json"
     - name: Push to gist
       uses: exuanbo/actions-deploy-gist@v1
       with:
         token: ${{ secrets.GIST_TOKEN }}
         gist_id:  ${{ secrets.GIST_ID }}
         file_path: sb_ruleset.json
+        file_type: text
+    - name: Push to gist
+      uses: exuanbo/actions-deploy-gist@v1
+      with:
+        token: ${{ secrets.GIST_TOKEN }}
+        gist_id:  ${{ secrets.GIST_ID }}
+        file_path: sb_ruleset_wo_redir.json
         file_type: text
     - name: Push to gist
       uses: exuanbo/actions-deploy-gist@v1
