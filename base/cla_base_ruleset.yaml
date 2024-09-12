@@ -1,28 +1,3 @@
-mode: rule
-log-level: info
-ipv6: true
-allow-lan: true
-mixed-port: 7890
-unified-delay: false
-tcp-concurrent: true
-external-controller: 0.0.0.0:9090
-external-ui: ui
-external-ui-url: "https://github.com/MetaCubeX/metacubexd/archive/refs/heads/gh-pages.zip"
-find-process-mode: strict
-global-client-fingerprint: chrome
-
-
-profile:
-  store-selected: true
-  # 储存 API 对策略组的选择，以供下次启动时使用
-  store-fake-ip: true
-  # 储存 fakeip 映射表，域名再次发生连接时，使用原有映射地址
-
-sniffer:
-  enable: true
-  parse-pure-ip: true
-  sniff: {HTTP: {ports: [80, 8080-8880]}, TLS: {ports: [443, 8443]}, QUIC: {ports: [443, 8443]}}
-  skip-domain: ['Mijia Cloud']
 
 tun:
   enable: true
