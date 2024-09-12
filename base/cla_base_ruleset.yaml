@@ -40,7 +40,7 @@ dns:
     - https://dns.alidns.com/dns-query
 
 proxy-groups:
-  - {name: 🌐 国外流量, type: select, include-all-providers: true}
+  - {name: 🌐 国外流量, type: select, use: [sub_provider_vless, sub_provider_xf]}
   - {name: 🚀 节点选择, type: select, proxies: [🌐 国外流量, 🎯 全球直连]}
   # 若机场的 UDP 质量不是很好，导致某游戏无法登录或进入房间，可以添加 `disable-udp: true` 配置项解决
   - {name: 🐟 漏网之鱼, type: select, proxies: [🚀 节点选择, 🎯 全球直连]}
