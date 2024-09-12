@@ -85,7 +85,7 @@ jobs:
     - name: create cla_ruleset.yaml
       run: |
         curl -O https://gist.githubusercontent.com/KerryJi/${{ secrets.GIST_ID }}/raw/cla_providers.yaml
-        yq eval-all '. as $item ireduce ({}; . * $item)' base/cla_base_ruleset.yaml cla_providers.yaml > cla_ruleset.yaml
+        yq eval-all '. as $item ireduce ({}; . * $item)' base/cla_base_ruleset.yaml base/dns.yaml cla_providers.yaml > cla_ruleset.yaml
     - name: Push to gist
       uses: exuanbo/actions-deploy-gist@v1
       with:

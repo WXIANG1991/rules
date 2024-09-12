@@ -36,18 +36,6 @@ tun:
 # hosts:
 #   'miwifi.com': 192.168.31.1
 
-dns:
-  enable: true
-  prefer-h3: true
-  ipv6: true
-  listen: 0.0.0.0:1053
-  fake-ip-range: 198.18.0.1/16
-  enhanced-mode: fake-ip
-  fake-ip-filter: ['rule-set:fakeip-filter,private,cn,direct-self,ntpservice']
-  nameserver:
-    - https://doh.pub/dns-query
-    - https://dns.alidns.com/dns-query
-
 proxy-groups:
   - {name: 🌐 国外流量, type: select, use: [sub_provider_vless, sub_provider_xf]}
   - {name: 🚀 节点选择, type: select, proxies: [🌐 国外流量, 🎯 全球直连]}
