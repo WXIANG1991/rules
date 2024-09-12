@@ -35,7 +35,7 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install pandas requests pyyaml
-        wget https://github.com/mikefarah/yq/releases/download/v4.44.3/yq_linux_amd64.tar.gz -O - | tar xz && mv ${BINARY} /usr/bin/yq
+        wget https://github.com/mikefarah/yq/releases/download/v4.44.3/yq_linux_amd64.tar.gz -O - | tar xz && mv yq_linux_amd64 /usr/bin/yq
     - name: Run converter script
       run: python ../converter.py
       working-directory: ./rule/
