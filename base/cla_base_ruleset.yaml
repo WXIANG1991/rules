@@ -5,7 +5,9 @@ allow-lan: true
 mixed-port: 7890
 unified-delay: false
 tcp-concurrent: true
-external-controller-tls: 127.0.0.1:9090
+external-controller-tls: 0.0.0.0:9090
+external-ui: ui
+external-ui-url: "https://github.com/MetaCubeX/metacubexd/archive/refs/heads/gh-pages.zip"
 find-process-mode: strict
 global-client-fingerprint: chrome
 
@@ -24,8 +26,8 @@ tun:
   device: mihomo
   strict-route: true
 
-hosts:
-  'miwifi.com': 192.168.31.1
+# hosts:
+#   'miwifi.com': 192.168.31.1
 
 dns:
   enable: true
