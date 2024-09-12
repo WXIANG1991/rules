@@ -43,7 +43,7 @@ dns:
   listen: 0.0.0.0:1053
   fake-ip-range: 198.18.0.1/16
   enhanced-mode: fake-ip
-  fake-ip-filter: ['rule-set:fakeip-filter,private,cn,direct-self']
+  fake-ip-filter: ['rule-set:fakeip-filter,private,cn,direct-self,ntpservice']
   nameserver:
     - https://doh.pub/dns-query
     - https://dns.alidns.com/dns-query
@@ -90,6 +90,14 @@ rule-providers:
     format: text
     path: ./rules/proxy-self.list
     url: "https://raw.githubusercontent.com/KerryJi/rules/main/rule/proxy-self.list"
+    interval: 86400
+
+  ntpservice:
+    type: http
+    behavior: classical
+    format: text
+    path: ./rules/NTPService.list
+    url: "https://raw.githubusercontent.com/KerryJi/rules/main/rule/NTPService.list"
     interval: 86400
 
   private:
@@ -191,6 +199,7 @@ rule-providers:
 rules:
   - RULE-SET,private,🔒 私有网络
   - RULE-SET,direct-self,🇨🇳 直连域名
+  - RULE-SET,ntpservice,🇨🇳 直连域名
   - RULE-SET,proxy-self,🪜 代理域名
   - RULE-SET,microsoft-cn,🪟 微软服务
   - RULE-SET,apple-cn,🍎 苹果服务
