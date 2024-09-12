@@ -5,7 +5,11 @@ dns:
   listen: 0.0.0.0:7874
   fake-ip-range: 198.18.0.1/16
   enhanced-mode: fake-ip
-  fake-ip-filter: ['rule-set:fakeip-filter,private,cn,direct-self,ntpservice']
+  fake-ip-filter: ['rule-set:fakeip-filter',
+                  'rule-set:private',
+                  'rule-set:cn',
+                  'rule-set:direct-self',
+                  'rule-set:ntpservice']
   nameserver:
     - https://doh.pub/dns-query
     - https://dns.alidns.com/dns-query
