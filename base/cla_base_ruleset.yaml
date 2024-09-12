@@ -43,7 +43,7 @@ dns:
   listen: 0.0.0.0:1053
   fake-ip-range: 198.18.0.1/16
   enhanced-mode: fake-ip
-  fake-ip-filter: ['rule-set:fakeip-filter,private,cn']
+  fake-ip-filter: ['rule-set:fakeip-filter,private,cn,direct-self']
   nameserver:
     - https://doh.pub/dns-query
     - https://dns.alidns.com/dns-query
@@ -63,7 +63,6 @@ proxy-groups:
   - {name: 🇨🇳 直连 IP, type: select, proxies: [🎯 全球直连, 🚀 节点选择]}
   - {name: 🪜 代理域名, type: select, proxies: [🚀 节点选择, 🎯 全球直连]}
   - {name: 📲 电报消息, type: select, proxies: [🚀 节点选择]}
-  - {name: 🖥️ 直连软件, type: select, proxies: [🎯 全球直连]}
   - {name: 🔒 私有网络, type: select, proxies: [🎯 全球直连]}
   - {name: 🎯 全球直连, type: select, proxies: [DIRECT]}
 
@@ -91,14 +90,6 @@ rule-providers:
     format: text
     path: ./rules/proxy-self.list
     url: "https://raw.githubusercontent.com/KerryJi/rules/main/rule/proxy-self.list"
-    interval: 86400
-
-  applications:
-    type: http
-    behavior: classical
-    format: text
-    path: ./rules/applications.list
-    url: "https://github.com/DustinWin/ruleset_geodata/releases/download/clash-ruleset/applications.list"
     interval: 86400
 
   private:
@@ -198,7 +189,6 @@ rule-providers:
     interval: 86400
 
 rules:
-  - RULE-SET,applications,🖥️ 直连软件
   - RULE-SET,private,🔒 私有网络
   - RULE-SET,direct-self,🇨🇳 直连域名
   - RULE-SET,proxy-self,🪜 代理域名
