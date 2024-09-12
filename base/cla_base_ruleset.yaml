@@ -200,6 +200,8 @@ rule-providers:
 rules:
   - RULE-SET,applications,🖥️ 直连软件
   - RULE-SET,private,🔒 私有网络
+  - RULE-SET,direct-self,🇨🇳 直连域名
+  - RULE-SET,proxy-self,🪜 代理域名
   - RULE-SET,microsoft-cn,🪟 微软服务
   - RULE-SET,apple-cn,🍎 苹果服务
   - RULE-SET,google-cn,🇬 谷歌服务
@@ -210,5 +212,5 @@ rules:
   - RULE-SET,cn,🇨🇳 直连域名
   - RULE-SET,telegramip,📲 电报消息,no-resolve
   - RULE-SET,privateip,🔒 私有网络,no-resolve
-  - RULE-SET,cnip,🇨🇳 直连 IP
+  - RULE-SET,cnip,🇨🇳 直连 IP,no-resolve
   - MATCH,🐟 漏网之鱼
