@@ -1,3 +1,13 @@
+mode: rule
+log-level: error
+allow-lan: true
+unified-delay: false
+tcp-concurrent: true
+global-client-fingerprint: chrome
+profile: {store-selected: true}
+
+
+
 
 tun:
   enable: true

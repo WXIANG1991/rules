@@ -1,15 +1,11 @@
-mode: rule
-log-level: info
+
 ipv6: true
-allow-lan: true
 mixed-port: 7890
-unified-delay: false
-tcp-concurrent: true
 external-controller: 0.0.0.0:9090
 external-ui: ui
 external-ui-url: "https://github.com/MetaCubeX/metacubexd/archive/refs/heads/gh-pages.zip"
 find-process-mode: strict
-global-client-fingerprint: chrome
+
 
 sniffer:
   enable: true
