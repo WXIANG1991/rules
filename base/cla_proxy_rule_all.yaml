@@ -1,4 +1,5 @@
 proxy-groups:
+  - {name: 🧱 代理域名, type: select, proxies: [🚀 节点选择, 🎯 全球直连]}
   - {name: 🚀 节点选择, type: select, proxies: [🆚 vless 节点, 🛫 我的机场, 🎯 全球直连]}
   - {name: 🆚 vless 节点, type: select, use: [sub_provider_vless]}
   - {name: 🛫 我的机场, type: select, use: [sub_provider_xf]}
@@ -12,7 +13,6 @@ proxy-groups:
   - {name: 🍎 苹果服务, type: select, proxies: [🎯 全球直连, 🚀 节点选择]}
   - {name: 🇨🇳 直连域名, type: select, proxies: [🎯 全球直连, 🚀 节点选择]}
   - {name: 🇨🇳 直连 IP, type: select, proxies: [🎯 全球直连, 🚀 节点选择]}
-  - {name: 🧱 代理域名, type: select, proxies: [🚀 节点选择, 🎯 全球直连]}
   - {name: 📲 电报信息, type: select, proxies: [🚀 节点选择]}
   - {name: 🔒 私有网络, type: select, proxies: [🎯 全球直连]}
   - {name: 🛑 广告拦截, type: select, proxies: [REJECT]}
