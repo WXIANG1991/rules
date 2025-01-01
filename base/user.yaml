@@ -13,8 +13,14 @@ sniffer:
   sniff: {HTTP: {ports: [80, 8080-8880]}, TLS: {ports: [443, 8443]}, QUIC: {ports: [443, 8443]}}
   skip-domain: ['Mijia Cloud']
 
-# hosts:
-#   'miwifi.com': 192.168.31.1
+hosts:
+  # doh.pub: [1.12.12.12, 120.53.53.53, 2402:4e00::]
+  # dns.alidns.com: [223.5.5.5, 223.6.6.6, 2400:3200::1, 2400:3200:baba::1]
+  # miwifi.com: 192.168.31.1
+
+  doh.pub: [1.12.12.12, 120.53.53.53]
+  dns.alidns.com: [223.5.5.5, 223.6.6.6]
+  services.googleapis.cn: services.googleapis.com
 
 dns:
   enable: true
@@ -25,5 +31,8 @@ dns:
   enhanced-mode: fake-ip
   fake-ip-filter: ['rule-set:fakeip-filter,private,cn,direct-self,ntpservice']
   nameserver:
+    - https://doh.pub/dns-query
+    - https://dns.alidns.com/dns-query
+  direct-nameserver:
     - https://doh.pub/dns-query
     - https://dns.alidns.com/dns-query
