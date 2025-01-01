@@ -86,12 +86,20 @@ jobs:
       run: |
         curl -O https://gist.githubusercontent.com/KerryJi/${{ secrets.GIST_ID }}/raw/cla_providers.yaml
         yq eval-all '. as $item ireduce ({}; . * $item)' base/cla_base_ruleset.yaml base/user.yaml cla_providers.yaml > cla_ruleset.yaml
+        yq eval-all '. as $item ireduce ({}; . * $item)' cla_ruleset.yaml base/cla_proxy_rule_all.yaml > cla_ruleset_all.yaml
     - name: Push to gist
       uses: exuanbo/actions-deploy-gist@v1
       with:
         token: ${{ secrets.GIST_TOKEN }}
         gist_id:  ${{ secrets.GIST_ID }}
         file_path: cla_ruleset.yaml
+        file_type: text
+    - name: Push to gist
+      uses: exuanbo/actions-deploy-gist@v1
+      with:
+        token: ${{ secrets.GIST_TOKEN }}
+        gist_id:  ${{ secrets.GIST_ID }}
+        file_path: cla_ruleset_all.yaml
         file_type: text
     - name: Push to gist
       uses: exuanbo/actions-deploy-gist@v1
