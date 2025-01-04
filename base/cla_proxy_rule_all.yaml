@@ -171,5 +171,5 @@ rules:
   - RULE-SET,cn,🇨🇳 直连域名
   - RULE-SET,telegramip,📲 电报信息,no-resolve
   - RULE-SET,privateip,🔒 私有网络,no-resolve
-  - RULE-SET,cnip,🇨🇳 直连 IP
+  - RULE-SET,cnip,🇨🇳 直连 IP,no-resolve
   - MATCH,🐟 漏网之鱼
