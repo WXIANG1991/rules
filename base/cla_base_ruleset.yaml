@@ -1,4 +1,4 @@
-ipv6: false
+ipv6: true
 mixed-port: 7890
 external-controller: 0.0.0.0:9090
 external-ui: ui
