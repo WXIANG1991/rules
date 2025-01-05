@@ -14,18 +14,18 @@ sniffer:
   skip-domain: ['Mijia Cloud']
 
 hosts:
-  # doh.pub: [1.12.12.12, 120.53.53.53, 2402:4e00::]
-  # dns.alidns.com: [223.5.5.5, 223.6.6.6, 2400:3200::1, 2400:3200:baba::1]
-  # miwifi.com: 192.168.31.1
+  doh.pub: [1.12.12.12, 120.53.53.53, 2402:4e00::]
+  dns.alidns.com: [223.5.5.5, 223.6.6.6, 2400:3200::1, 2400:3200:baba::1]
+  miwifi.com: 192.168.31.1
 
-  doh.pub: [1.12.12.12, 120.53.53.53]
-  dns.alidns.com: [223.5.5.5, 223.6.6.6]
-  services.googleapis.cn: services.googleapis.com
+  # doh.pub: [1.12.12.12, 120.53.53.53]
+  # dns.alidns.com: [223.5.5.5, 223.6.6.6]
+  # services.googleapis.cn: services.googleapis.com
 
 dns:
   enable: true
   prefer-h3: true
-  ipv6: false
+  ipv6: true
   listen: 0.0.0.0:7874
   fake-ip-range: 198.18.0.1/16
   enhanced-mode: fake-ip
