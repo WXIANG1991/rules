@@ -3,22 +3,9 @@
 singbox_rule_base=https://raw.githubusercontent.com/KerryJi/rules/main/base/sb_base_ruleset.json
 
 ;解决DNS泄露，无分流群组
-ruleset=🎯 全球直连,[]rule_set,private-ip,no-resolve
-ruleset=🎯 全球直连,[]rule_set,private
-ruleset=🎯 全球直连,[]rule_set,direct-self
-ruleset=🎯 全球直连,[]rule_set,ntpservice
 ruleset=🚀 节点选择,[]rule_set,tiktok
 ruleset=🚀 节点选择,[]rule_set,google-cn
-ruleset=🚀 节点选择,[]rule_set,proxy-self
-ruleset=🚀 节点选择,[]rule_set,ai
 ruleset=🚀 节点选择,[]rule_set,telegram
-ruleset=🎯 全球直连,[]rule_set,bytedance
-# ruleset=🎯 全球直连,[]rule_set,azure
-# ruleset=REJECT,[]rule_set,ads
-ruleset=REJECT,[]rule_set,win-spy
-ruleset=🎯 全球直连,[]rule_set,win-update
-ruleset=🎯 全球直连,[]rule_set,microsoft-cn
-ruleset=🎯 全球直连,[]rule_set,apple-cn
 ruleset=🎯 全球直连,[]rule_set,cn
 ruleset=🚀 节点选择,[]rule_set,proxy
 ruleset=🚀 节点选择,[]rule_set,telegram-ip,no-resolve
